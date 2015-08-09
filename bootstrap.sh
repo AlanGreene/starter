@@ -31,8 +31,6 @@ function cecho() {
     echo "$color$message$reset"
 }
 
-set -e
-
 if [ ! -n "$STARTER" ]; then
     STARTER=~/.starter
 fi
