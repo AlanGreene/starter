@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Install Homebrew
+if test ! $(which brew)
+then
+    echo "Installing Homebrew.."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    echo "Homebrew found. Going on.."
+fi
+
+# verify Homebrew install
+brew doctor
+
+# Update Homebrew
+brew update
+# Upgrade any existing formulae
+brew upgrade
+
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+# More configuration options available
+# @see https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# install brews - commands specified in Brewfile (e.g. tap 'homebrew/versions' \n brew 'wget' \n brew 'git')
+brew tap homebrew/bundle
+brew bundle
+
+# install casks - commands specified in Caskfile (e.g. brew 'caskroom/cask/brew-cask' \n cask 'google-chrome')
+# alternatively, include these in Brewfile - but lose ability to run them separately
+#brew 'caskroom/cask/brew-cask'
+# verify cask install
+# brew cask doctor
+#brew bundle Caskfile
+
+# Remove outdated versions from the cellar
+brew cleanup
+brew cask cleanup

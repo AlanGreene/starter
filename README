@@ -1,0 +1,13 @@
+Very much work in progress, DO NOT RUN THIS
+
+To install:
+
+curl -L http://dev.alangreene.net/starter | sh
+
+OR
+
+git clone git@github.com:AlanGreene/starter.git && cd starter && source bootstrap.sh
+
+
+TODO:
+- base outline of bootstrap script on https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
