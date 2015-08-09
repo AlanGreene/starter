@@ -36,6 +36,10 @@ brew 'ssh-copy-id'
 # brew 'mongodb'
 brew 'tree'
 
+# build tools
+brew 'maven'
+brew 'gradle'
+
 # http://caskroom.io/search
 # https://caskroomstore.org/
 tap 'caskroom/cask'
