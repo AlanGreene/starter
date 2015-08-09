@@ -36,10 +36,6 @@ brew 'ssh-copy-id'
 # brew 'mongodb'
 brew 'tree'
 
-# build tools
-brew 'maven'
-brew 'gradle'
-
 # http://caskroom.io/search
 # https://caskroomstore.org/
 tap 'caskroom/cask'
@@ -103,3 +99,8 @@ cask 'quicklook-csv'
 cask 'betterzipql'
 cask 'webpquicklook'
 cask 'suspicious-package'
+
+# build tools
+cask 'java'
+brew 'maven'
+brew 'gradle'
