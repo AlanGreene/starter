@@ -38,26 +38,26 @@ if [ ! -n "$STARTER" ]; then
 fi
 
 if [ -d "$STARTER" ]; then
-    cecho "You already have the dotfiles starter installed. You'll need to remove $STARTER if you want to install again." $red
+    # TODO: need to support updates
+    cecho "You already have the dotfiles starter installed. Remove $STARTER if you want to install again." $red
     exit
 fi
 
 # set default platform
-platformFile="$STARTER/.osx"
+platformFile=".osx"
 
 case "$OSTYPE" in
     darwin*)
-        cecho "Installing..." $green
         # Install Xcode command line tools, required by git and others
         #
         # the following command opens a software update UI for user interaction so we won't use that
         #xcode-select --install
 
         # check if Xcode command line tools are already installed
-        echo "Checking for Xcode command line tools"
+        cecho "Checking for Xcode command line tools..." $blue
         ! $(xcode-select -p > /dev/null 2>&1) && {
             #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-            echo "Installing Xcode command line tools"
+            echo "Installing Xcode command line tools..."
             touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
             PROD=$(softwareupdate -l |
               grep "\*.*Command Line" |
@@ -80,7 +80,7 @@ esac
 
 cecho "Cloning dotfiles starter..." $blue
 hash git >/dev/null 2>&1 && env git clone --depth=1 https://github.com/AlanGreene/starter.git $STARTER || {
-    echo "git not installed"
+    cecho "git not installed" $red
     exit
 }
 
@@ -91,4 +91,4 @@ source $platformFile
 
 cd $STARTLOC
 
-cecho "'\nDotfiles starter installation complete.\n" $green
+cecho "'\nDotfiles starter installation complete\n" $green

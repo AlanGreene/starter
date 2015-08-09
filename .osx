@@ -3,10 +3,10 @@
 # Install Homebrew
 if test ! $(which brew)
 then
-    echo "Installing Homebrew.."
+    cecho "Installing Homebrew..." $blue
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
-    echo "Homebrew found. Going on.."
+    cecho "Homebrew already installed." $green
 fi
 
 # verify Homebrew install
@@ -23,6 +23,8 @@ brew upgrade
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # install brews - commands specified in Brewfile (e.g. tap 'homebrew/versions' \n brew 'wget' \n brew 'git')
+cecho "Installing homebrew formulae..." $blue
+cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
 brew bundle
 
@@ -30,9 +32,9 @@ brew bundle
 # alternatively, include these in Brewfile - but lose ability to run them separately
 #brew 'caskroom/cask/brew-cask'
 # verify cask install
-# brew cask doctor
+#brew cask doctor
 #brew bundle Caskfile
 
-# Remove outdated versions from the cellar
+cecho "Remove outdated homebrew formulae from the cellar"
 brew cleanup
 brew cask cleanup
