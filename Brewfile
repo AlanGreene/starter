@@ -49,7 +49,11 @@ cask 'alfred'
 cask 'anvil'
 
 # TODO: need to run the installer after this
+# open /opt/homebrew-cask/Caskroom/backblaze/latest/Backblaze\ Installer.app
 cask 'backblaze'
+
+# GPG Suite
+cask 'gpgtools'
 
 cask 'caffeine'
 cask 'cheatsheet'
