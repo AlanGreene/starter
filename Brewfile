@@ -92,6 +92,10 @@ cask 'keepassx'
 
 cask 'chromecast'
 
+# sshfs
+cask 'osxfuse'
+cask 'macfusion'
+
 # Install useful Quick Look plugins for developers
 # See https://github.com/sindresorhus/quick-look-plugins
 cask 'qlcolorcode'
