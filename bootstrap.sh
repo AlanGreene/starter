@@ -90,7 +90,7 @@ hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.c
 STARTLOC=`pwd`
 cd $STARTER
 
-source ${platformFileLoc}/install.sh
+source ${platformFileLoc}/config.sh
 
 cd $STARTLOC
 
