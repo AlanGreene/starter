@@ -82,7 +82,7 @@ case "$OSTYPE" in
 esac
 
 cecho "Cloning dotfiles starter..." $blue
-hash git >/dev/null 2>&1 && env git clone --depth=1 https://github.com/AlanGreene/starter.git $STARTER || {
+hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.com/AlanGreene/starter.git $STARTER || {
     cecho "git not installed" $red
     exit
 }

@@ -83,6 +83,8 @@ cask 'vagrant'
 cask 'vlc'
 # keyboards shortcuts to resize / position windows - https://www.irradiatedsoftware.com/sizeup/
 cask 'sizeup'
+# Lua-based automation, including window resize / potisioning - http://www.hammerspoon.org/
+# cask 'hammerspoon'
 
 # ## PICK A MOCKUP APP
 # cask 'balsamiq'
@@ -95,6 +97,11 @@ cask 'chromecast'
 # sshfs
 cask 'osxfuse'
 cask 'macfusion'
+
+cask 'tunnelblick'
+
+# new versions only available from Mac AppStore
+cask 'ccmenu'
 
 # Install useful Quick Look plugins for developers
 # See https://github.com/sindresorhus/quick-look-plugins
