@@ -47,7 +47,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # set default platform
-platformFile=".osx"
+platformFileLoc="osx"
 
 case "$OSTYPE" in
     darwin*)
@@ -90,7 +90,7 @@ hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.c
 STARTLOC=`pwd`
 cd $STARTER
 
-source $platformFile
+source ${platformFileLoc}/install.sh
 
 cd $STARTLOC
 

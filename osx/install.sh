@@ -29,7 +29,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 cecho "Installing homebrew formulae..." $blue
 cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
-brew bundle
+brew bundle --file=${STARTER}/osx/brew/Brewfile
 
 # install casks - commands specified in Caskfile (e.g. brew 'caskroom/cask/brew-cask' \n cask 'google-chrome')
 # alternatively, include these in Brewfile - but lose ability to run them separately
