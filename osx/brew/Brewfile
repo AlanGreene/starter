@@ -92,8 +92,6 @@ cask 'sizeup'
 
 cask 'keepassx'
 
-cask 'chromecast'
-
 # sshfs
 cask 'osxfuse'
 cask 'macfusion'
