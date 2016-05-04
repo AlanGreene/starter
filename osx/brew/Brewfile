@@ -123,4 +123,4 @@ brew 'gradle'
 
 # IDEs etc.
 cask 'eclipse-java'
-
+cask 'sqlitebrowser'
