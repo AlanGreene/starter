@@ -58,6 +58,7 @@ cask 'gpgtools'
 
 cask 'caffeine'
 cask 'cheatsheet'
+cask 'cyberduck'
 cask 'dash'
 cask 'docker-toolbox'
 cask 'dropbox'
