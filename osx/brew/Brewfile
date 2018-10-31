@@ -11,7 +11,9 @@ brew 'findutils'
 # Install Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew 'bash'
-#brew 'bash-completion'
+brew 'bash-completion'
+brew 'zsh'
+brew 'zsh-completions'
 
 tap 'homebrew/dupes'
 tap 'homebrew/versions'
