@@ -37,6 +37,7 @@ brew 'curl'
 # tool to easily access gitignore boilerplates - https://github.com/simonwhitaker/gibo - https://github.com/github/gitignore
 brew 'gibo'
 
+brew 'rsync'
 brew 'ssh-copy-id'
 # brew 'mongodb'
 brew 'thefuck'
