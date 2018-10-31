@@ -39,6 +39,7 @@ brew 'gibo'
 
 brew 'ssh-copy-id'
 # brew 'mongodb'
+brew 'thefuck'
 brew 'tree'
 
 # http://caskroom.io/search
