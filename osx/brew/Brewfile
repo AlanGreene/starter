@@ -21,6 +21,7 @@ brew 'homebrew/dupes/grep'
 #brew 'homebrew/dupes/screen'
 brew 'ack'
 brew 'git'
+brew 'hub'
 brew 'openssl'
 # TODO: may need to add /usr/local/share/npm/bin to PATH, check this
 brew 'node@10'
