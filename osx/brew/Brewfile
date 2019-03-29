@@ -132,7 +132,7 @@ cask 'webpquicklook'
 cask 'suspicious-package'
 
 # build tools
-# cask 'java'
+cask 'java8'
 # brew 'maven'
 # brew 'gradle'
 
