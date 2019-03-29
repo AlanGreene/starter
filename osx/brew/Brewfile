@@ -15,9 +15,10 @@ brew 'bash-completion'
 # brew 'zsh'
 # brew 'zsh-completions'
 
-tap 'homebrew/dupes'
+# homebrew/dupes is deprecated, find replacement
+#tap 'homebrew/dupes'
 tap 'homebrew/versions'
-brew 'homebrew/dupes/grep'
+#brew 'homebrew/dupes/grep'
 #brew 'homebrew/dupes/screen'
 brew 'ack'
 brew 'git'
