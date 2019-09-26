@@ -22,7 +22,7 @@ brew upgrade
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 # More configuration options available
-# @see https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
+# @see https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md#options
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # install brews - commands specified in Brewfile (e.g. tap 'homebrew/versions' \n brew 'wget' \n brew 'git')
@@ -31,9 +31,6 @@ cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
 brew bundle --file=${STARTER}/osx/brew/Brewfile
 
-# install casks - commands specified in Caskfile (e.g. brew 'caskroom/cask/brew-cask' \n cask 'google-chrome')
-# alternatively, include these in Brewfile - but lose ability to run them separately
-#brew 'caskroom/cask/brew-cask'
 # verify cask install
 #brew cask doctor
 #brew bundle Caskfile

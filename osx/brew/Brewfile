@@ -47,11 +47,7 @@ brew 'ssh-copy-id'
 brew 'thefuck'
 brew 'tree'
 
-# http://caskroom.io/search
-# https://caskroomstore.org/
-tap 'caskroom/cask'
-tap 'caskroom/versions'
-brew 'caskroom/cask/brew-cask'
+tap 'Homebrew/cask-versions'
 
 # verify cask install
 #brew cask doctor
