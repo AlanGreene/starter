@@ -48,6 +48,8 @@ brew 'ssh-copy-id'
 brew 'thefuck'
 brew 'tree'
 
+brew 'youtube-dl'
+
 tap 'Homebrew/cask-versions'
 
 # verify cask install
