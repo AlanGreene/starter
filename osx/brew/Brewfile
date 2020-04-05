@@ -15,21 +15,22 @@ brew 'bash-completion'
 # brew 'zsh'
 # brew 'zsh-completions'
 
-# homebrew/dupes is deprecated, find replacement
-#tap 'homebrew/dupes'
-tap 'homebrew/versions'
 #brew 'homebrew/dupes/grep'
 #brew 'homebrew/dupes/screen'
 brew 'ack'
 brew 'git'
 brew 'hub'
+
+# Mac App Store
+# brew 'mas'
+
 brew 'openssl'
 # TODO: may need to add /usr/local/share/npm/bin to PATH, check this
 brew 'node@10'
 brew 'yarn'
 brew 'jq'
 brew 'n'
-brew 'nvm'
+# brew 'nvm'
 brew 'unrar'
 brew 'wget'
 brew 'watch'
@@ -52,7 +53,9 @@ tap 'Homebrew/cask-versions'
 # verify cask install
 #brew cask doctor
 
-cask 'alfred'
+# macOS aerial screensaver
+# cask 'aerial'
+# cask 'alfred'
 cask 'anvil'
 
 # TODO: need to run the installer after this
@@ -62,17 +65,26 @@ cask 'backblaze'
 # GPG Suite
 # cask 'gpgtools'
 
+cask 'balenaetcher'
 cask 'caffeine'
-cask 'cheatsheet'
+# cask 'cheatsheet'
 cask 'cyberduck'
 cask 'dash'
+cask 'dbeaver-community'
 # cask 'docker-toolbox'
 cask 'docker'
+
+# Hide status bar icons
+# cask 'bartender'
+cask 'dozer'
+
+# Put output of any script in status bar
+# cask 'bitbar'
+
 cask 'dropbox'
 # cask 'firefox'
 # cask 'firefox-beta'
 cask 'fluid'
-# cask 'flux'
 cask 'google-chrome'
 # cask 'google-chrome-beta'
 cask 'google-chrome-canary'
@@ -81,21 +93,36 @@ cask 'grandperspective'
 # cask 'hazel'
 cask 'insomnia'
 cask 'iterm2'
+# cask 'kap'
+cask 'keybase'
+# cask 'keycastr'
 #cask 'libreoffice'
+
+# Firewall to block unknown outbound connections
+# similar to little snitch
+cask 'lulu'
+
+# Mock API
+cask 'mockoon'
+
+cask 'mounty'
 cask 'multifirefox'
+cask 'ngrok'
 #cask 'omnigraffle'
-# cask 'skype'
-cask 'spectacle'
+
+# Display dock in touch bar
+cask 'pock'
+
+cask 'rectangle'
+cask 'spotify'
 # install Sublime Text 3 dev - automatically links subl
 cask 'sublime-text-dev'
 cask 'the-unarchiver'
 cask 'transmit'
 # cask 'virtualbox'
-# cask 'vagrant'
-# cask 'vagrant-manager'
 cask 'vlc'
 # keyboards shortcuts to resize / position windows - https://www.irradiatedsoftware.com/sizeup/
-cask 'sizeup'
+# cask 'sizeup'
 # Lua-based automation, including window resize / potisioning - http://www.hammerspoon.org/
 # cask 'hammerspoon'
 
@@ -103,13 +130,11 @@ cask 'sizeup'
 # cask 'balsamiq'
 # cask 'pencil'
 
-cask 'keepassx'
+cask '1password'
 
 # sshfs
 cask 'osxfuse'
-cask 'macfusion'
-
-cask 'tunnelblick'
+cask 'sshfs'
 
 # new versions only available from Mac AppStore
 cask 'ccmenu'
