@@ -1,7 +1,18 @@
+# disable macos warning about shell default switch to zsh
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export EDITOR=nano
-export HISTCONTROL=ignorespace
+
+# Increase Bash history size. Default is 500.
+export HISTSIZE='32768'
+export HISTFILESIZE="${HISTSIZE}"
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth'
+# export HISTCONTROL=ignorespace
 
 export GOPATH=$HOME/workspace/go
+
+export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 #export PATH=$PATH:$HOME/workspace/public/kui/bin
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
