@@ -12,6 +12,8 @@ else
     cecho "Homebrew already installed." $green
 fi
 
+brew analytics off
+
 # verify Homebrew install
 brew doctor
 
@@ -34,8 +36,16 @@ brew bundle --file=${STARTER}/osx/brew/Brewfile
 cecho "Remove outdated homebrew formulae from the cellar"
 brew cleanup
 
-# postinstall steps for homebrew formulae and casks
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q "$(brew --prefix bash)/bin/bash" /etc/shells; then
+  echo "Switching default shell to bash";
+  echo "$(brew --prefix bash)/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "$(brew --prefix bash)/bin/bash";
+fi;
 
 # Remove the quarantine attribute
 # xattr -r ~/Library/QuickLook
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
+
+# install n and node@lts
+curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts

@@ -1,6 +1,4 @@
 # Install GNU core utilities (those that come with OS X are outdated)
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-# $PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 brew 'coreutils'
 # Install some other useful utilities like `sponge`
 #brew 'moreutils'
@@ -8,8 +6,7 @@ brew 'coreutils'
 brew 'findutils'
 # Install GNU `sed`, overwriting the built-in `sed`
 #brew install gnu-sed --default-names
-# Install Bash 4
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
+# Install Bash 5
 brew 'bash'
 brew 'bash-completion'
 # brew 'zsh'
@@ -25,11 +22,8 @@ brew 'hub'
 # brew 'mas'
 
 brew 'openssl'
-# TODO: may need to add /usr/local/share/npm/bin to PATH, check this
-brew 'node@10'
-brew 'yarn'
+# brew 'yarn'
 brew 'jq'
-brew 'n'
 # brew 'nvm'
 brew 'unrar'
 brew 'wget'
@@ -60,8 +54,6 @@ tap 'Homebrew/cask-versions'
 # cask 'alfred'
 cask 'anvil'
 
-# TODO: need to run the installer after this
-# open /opt/homebrew-cask/Caskroom/backblaze/latest/Backblaze\ Installer.app
 cask 'backblaze'
 
 # GPG Suite
@@ -71,7 +63,7 @@ cask 'balenaetcher'
 cask 'caffeine'
 # cask 'cheatsheet'
 cask 'cyberduck'
-cask 'dash'
+#cask 'dash'
 cask 'dbeaver-community'
 # cask 'docker-toolbox'
 cask 'docker'
@@ -136,7 +128,8 @@ cask '1password'
 
 # sshfs
 cask 'osxfuse'
-cask 'sshfs'
+# TODO: not available, find alternative
+#cask 'sshfs'
 
 # new versions only available from Mac AppStore
 cask 'ccmenu'
@@ -155,7 +148,7 @@ cask 'webpquicklook'
 cask 'suspicious-package'
 
 # build tools
-cask 'java8'
+brew cask install homebrew/cask-versions/adoptopenjdk8
 # brew 'maven'
 # brew 'gradle'
 

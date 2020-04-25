@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$SHELL" != "/bin/bash" ]; then
+    echo "\$SHELL is currently $SHELL, switching to /bin/bash"
+    chsh -s "/bin/bash"
+    echo "Restart the terminal and run the script again"
+    return
+fi;
+
 # Colours
 # tput setab [1-7] # Set the background colour using ANSI escape
 # tput setaf [1-7] # Set the foreground colour using ANSI escape
@@ -63,9 +70,9 @@ case "$OSTYPE" in
             echo "Installing Xcode command line tools..."
             touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
             PROD=$(softwareupdate -l |
-              grep "\*.*Command Line" |
+              grep "Command Line Tools" |
               head -n 1 | awk -F"*" '{print $2}' |
-              sed -e 's/^ *//' |
+              sed -e 's/^ Label: //' |
               tr -d '\n')
             softwareupdate -i "$PROD" --verbose;
         }

@@ -2,7 +2,7 @@ Very much a work in progress, DO NOT RUN THIS
 
 To install:
 
-`curl -L https://dev.alangreene.net/starter | sh`
+`curl -L https://dev.alangreene.net/starter | bash`
 
 OR
 

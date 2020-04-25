@@ -1,4 +1,4 @@
-# disable macos warning about shell default switch to zsh
+# disable macos warning about zsh default shell
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export EDITOR=nano
@@ -6,13 +6,12 @@ export EDITOR=nano
 # Increase Bash history size. Default is 500.
 export HISTSIZE='32768'
 export HISTFILESIZE="${HISTSIZE}"
-# Omit duplicates and commands that begin with a space from history.
+# Omit duplicates and commands that begin with a space from history, alt. 'ignorespace'
 export HISTCONTROL='ignoreboth'
-# export HISTCONTROL=ignorespace
 
 export GOPATH=$HOME/workspace/go
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 #export PATH=$PATH:$HOME/workspace/public/kui/bin
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -20,6 +19,12 @@ export PATH=$PATH:$GOPATH/bin
 #export PATH="$(brew --prefix ruby)/bin:$PATH"
 #export PATH="$(gem environment gemdir)/bin:$PATH"
 #export PATH=$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin
+
+export $PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export $PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
+export $PATH=$(brew --prefix curl)/bin:$PATH
+export $PATH=$(brew --prefix rsync)/bin:$PATH
+export $PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 
