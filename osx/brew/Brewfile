@@ -116,7 +116,7 @@ cask 'spotify'
 cask 'sublime-text-dev'
 cask 'the-unarchiver'
 cask 'transmit'
-# cask 'virtualbox'
+cask 'virtualbox'
 cask 'vlc'
 # keyboards shortcuts to resize / position windows - https://www.irradiatedsoftware.com/sizeup/
 # cask 'sizeup'
