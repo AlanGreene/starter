@@ -94,7 +94,10 @@ cask 'keybase'
 
 # Firewall to block unknown outbound connections
 # similar to little snitch
-cask 'lulu'
+# relies on kernel extension which will be blocked
+# in future macos release
+# TODO: investigate options
+#cask 'lulu'
 
 # Mock API
 cask 'mockoon'
