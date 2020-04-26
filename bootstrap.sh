@@ -98,8 +98,11 @@ if [ ! -d "$STARTER" ]; then
 else
     cecho "$STARTER already exists, press ENTER to continue, ^C to exit" $yellow
     read
-    cecho "Updating $STARTER" $cyan
+    cecho "Checking status of $STARTER" $cyan
     cd $STARTER
+    cecho "Checking for modified files" $cyan
+    git diff-index --exit-code --name-only HEAD
+    cecho "Updating $STARTER" $cyan
     git pull
     cecho "$STARTER updated" $green
 fi
