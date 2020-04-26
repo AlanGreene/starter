@@ -3,6 +3,25 @@
 # Mac Software Update
 #softwareupdate -i -a
 
+# Install Xcode command line tools, required by git and others
+#
+# the following command opens a software update UI for user interaction so we won't use that
+#xcode-select --install
+
+# check if Xcode command line tools are already installed
+cecho "Checking for Xcode command line tools..." $blue
+! $(xcode-select -p > /dev/null 2>&1) && {
+    #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+    echo "Installing Xcode command line tools..."
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+    PROD=$(softwareupdate -l |
+      grep "Command Line Tools" |
+      head -n 1 | awk -F"*" '{print $2}' |
+      sed -e 's/^ Label: //' |
+      tr -d '\n')
+    softwareupdate -i "$PROD" --verbose;
+}
+
 # Install Homebrew
 if test ! $(which brew)
 then
@@ -26,7 +45,7 @@ brew upgrade
 cecho "Installing homebrew formulae..." $blue
 cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
-brew bundle --file=${STARTER}/osx/brew/Brewfile
+brew bundle --file=${STARTER}/macOS/brew/Brewfile
 
 # verify cask install
 #brew cask doctor

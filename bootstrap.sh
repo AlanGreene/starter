@@ -42,11 +42,13 @@ if [ ! -n "$STARTER" ]; then
     STARTER=~/.starter
 fi
 
-if [ -d "$STARTER" ]; then
-    # TODO: need to support updates
-    cecho "You already have the dotfiles starter installed. Remove $STARTER if you want to install again." $red
-    exit
-fi
+#if [ -d "$STARTER" ]; then
+#    # TODO: need to support updates
+#    cecho "You already have the dotfiles starter installed. Remove $STARTER if you want to install again." $red
+#    exit
+#fi
+
+cecho "\nAbout to begin setup, enter your password when prompted\n" $yellow
 
 # Ask for the administrator password upfront
 # and run a keep-alive to update existing `sudo` time stamp until script has finished
@@ -54,47 +56,40 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # set default platform
-platformFileLoc="osx"
+platformFileLoc="macOS"
 
 case "$OSTYPE" in
     darwin*)
-        # Install Xcode command line tools, required by git and others
-        #
-        # the following command opens a software update UI for user interaction so we won't use that
-        #xcode-select --install
-
-        # check if Xcode command line tools are already installed
-        cecho "Checking for Xcode command line tools..." $blue
-        ! $(xcode-select -p > /dev/null 2>&1) && {
-            #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-            echo "Installing Xcode command line tools..."
-            touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-            PROD=$(softwareupdate -l |
-              grep "Command Line Tools" |
-              head -n 1 | awk -F"*" '{print $2}' |
-              sed -e 's/^ Label: //' |
-              tr -d '\n')
-            softwareupdate -i "$PROD" --verbose;
-        }
+        cecho "Detected macOS, beginning setup" $cyan
         ;;
     linux*)
-        cecho "This dotfile starter currently only supports OSX. Linux support coming soon. Exiting." $red
+        cecho "This dotfile starter currently only supports macOS. Linux support coming soon. Exiting." $red
         exit 1
         ;;
     *)
         cecho "Unsupported: $OSTYPE" $red
-        cecho "This dotfile starter currently only supports OSX. Exiting." $red
+        cecho "This dotfile starter currently only supports macOS. Exiting." $red
         exit 1
         ;;
 esac
 
-cecho "Cloning dotfiles starter..." $blue
-hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.com/AlanGreene/starter.git $STARTER || {
-    cecho "git not installed" $red
-    exit
-}
-
 STARTLOC=`pwd`
+
+if [ ! -d "$STARTER" ]; then
+    cecho "Cloning dotfiles starter..." $blue
+    hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.com/AlanGreene/starter.git $STARTER || {
+        cecho "git not installed" $red
+        exit
+    }
+else
+    cecho "$STARTER already exists, press ENTER to continue, ^C to exit" $yellow
+    read
+    cecho "Updating $STARTER" $yellow
+    cd $STARTER
+    git pull
+    cecho "$STARTER updated" $green
+fi
+
 cd $STARTER
 
 source ${platformFileLoc}/config.sh
