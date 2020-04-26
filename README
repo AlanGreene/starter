@@ -2,8 +2,4 @@ Very much a work in progress, DO NOT RUN THIS
 
 To install:
 
-`curl -L https://dev.alangreene.net/starter | bash`
-
-OR
-
-`git clone git@github.com:AlanGreene/starter.git && cd starter && source bootstrap.sh`
+`bash <(curl -L https://dev.alangreene.net/starter)`

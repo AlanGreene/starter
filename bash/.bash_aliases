@@ -150,7 +150,6 @@ function digga() {
   dig +nocmd "$1" any +multiline +noall +answer;
 }
 
-
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 

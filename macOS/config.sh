@@ -1,4 +1,14 @@
 #!/bin/bash
+set -Eeo pipefail
+
+# echo an error message before exiting
+catch() {
+  if [ "$1" != "0" ]; then
+    cecho "\nCommand \"${last_command}\" failed with exit code $1.\nReview any logs above and retry.\n" $red
+  fi
+}
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+trap 'catch $?' EXIT
 
 # Mac Software Update
 #softwareupdate -i -a
@@ -9,7 +19,7 @@
 #xcode-select --install
 
 # check if Xcode command line tools are already installed
-cecho "Checking for Xcode command line tools..." $blue
+cecho "Checking for Xcode command line tools..." $cyan
 ! $(xcode-select -p > /dev/null 2>&1) && {
     #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
     echo "Installing Xcode command line tools..."
@@ -23,9 +33,8 @@ cecho "Checking for Xcode command line tools..." $blue
 }
 
 # Install Homebrew
-if test ! $(which brew)
-then
-    cecho "Installing Homebrew..." $blue
+if test ! $(which brew); then
+    cecho "Installing Homebrew..." $cyan
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 else
     cecho "Homebrew already installed." $green
@@ -34,7 +43,9 @@ fi
 brew analytics off
 
 # verify Homebrew install
-brew doctor
+cecho "Running brew doctor" $cyan
+brew doctor || true
+cecho "brew doctor complete\n" $cyan
 
 # Update Homebrew
 brew update
@@ -42,7 +53,7 @@ brew update
 brew upgrade
 
 # install brews - commands specified in Brewfile (e.g. tap 'homebrew/versions' \n brew 'wget' \n brew 'git')
-cecho "Installing homebrew formulae..." $blue
+cecho "Installing homebrew formulae..." $cyan
 cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
 brew bundle --file=${STARTER}/macOS/brew/Brewfile
@@ -57,14 +68,16 @@ brew cleanup
 
 # Switch to using brew-installed bash as default shell
 if ! fgrep -q "$(brew --prefix bash)/bin/bash" /etc/shells; then
-  echo "Switching default shell to bash";
-  echo "$(brew --prefix bash)/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "$(brew --prefix bash)/bin/bash";
-fi;
+  echo "Switching default shell to bash"
+  echo "$(brew --prefix bash)/bin/bash" | sudo tee -a /etc/shells
+  chsh -s "$(brew --prefix bash)/bin/bash"
+fi
 
 # Remove the quarantine attribute
 # xattr -r ~/Library/QuickLook
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
-# install n and node@lts
-curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts
+if test ! $(which n); then
+  # install n and node@lts
+  curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts
+fi
