@@ -130,7 +130,9 @@ cask 'vlc'
 cask '1password'
 
 # sshfs
-cask 'osxfuse'
+# relies on kernel extension which will be blocked
+# in future macos release
+# cask 'osxfuse'
 # TODO: not available, find alternative
 #cask 'sshfs'
 
