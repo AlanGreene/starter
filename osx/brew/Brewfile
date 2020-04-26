@@ -148,7 +148,7 @@ cask 'webpquicklook'
 cask 'suspicious-package'
 
 # build tools
-brew cask install homebrew/cask-versions/adoptopenjdk8
+cask 'homebrew/cask-versions/adoptopenjdk8'
 # brew 'maven'
 # brew 'gradle'
 
