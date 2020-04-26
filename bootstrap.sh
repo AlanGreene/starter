@@ -35,7 +35,7 @@ function cecho() {
     message=${1:-$defaultMsg}
     color=${2:-$black}
 
-    echo "$color$message$reset"
+    echo -e "$color$message$reset"
 }
 
 if [ ! -n "$STARTER" ]; then
@@ -101,4 +101,5 @@ source ${platformFileLoc}/config.sh
 
 cd $STARTLOC
 
-cecho "'\nDotfiles starter installation complete\n" $green
+cecho "\nDotfiles starter installation complete\n" $green
+cecho "Restart the terminal to ensure configuration is properly applied." $yellow
