@@ -4,7 +4,7 @@ if [ "$SHELL" != "/bin/bash" ]; then
     echo "\$SHELL is currently $SHELL, switching to /bin/bash"
     chsh -s "/bin/bash"
     echo "Restart the terminal and run the script again"
-    return
+    exit
 fi;
 
 # Colours
