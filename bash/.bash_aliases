@@ -242,13 +242,11 @@ alias krm="kubectl delete"
 alias kx="kubectl exec -i -t"
 
 complete -F __start_kubectl k
-#complete -F _kube_contexts kc
-#complete -F _kube_namespaces kn
-complete -F _complete_alias kc
+complete -F _kube_contexts kc
+complete -F _kube_namespaces kn
 complete -F _complete_alias kg
 complete -F _complete_alias kl
 complete -F _complete_alias klf
-complete -F _complete_alias kn
 complete -F _complete_alias krm
 complete -F _complete_alias kx
 

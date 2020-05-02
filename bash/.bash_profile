@@ -28,13 +28,17 @@ export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 
-for f in $HOME/.{bash_secrets,bash_aliases,bash_prompt,bash_complete_alias}; do
-  [ -f "$f" ] && source "$f";
+include () {
+  [ -r "$1" ] && source "$1"
+}
+
+for f in $HOME/.{bash_secrets,bash_complete_alias,bash_aliases,bash_prompt}; do
+  include "$f";
 done;
 unset f;
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
+include "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
 if [ -d $HOME/.bash_completion.d/ ]; then
   for f in $HOME/.bash_completion.d/*; do
@@ -42,6 +46,9 @@ if [ -d $HOME/.bash_completion.d/ ]; then
   done
   unset f
 fi
+
+include "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+include "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 
 eval "$(thefuck --alias)"
 

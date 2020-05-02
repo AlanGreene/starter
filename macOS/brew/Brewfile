@@ -6,7 +6,7 @@ brew 'findutils'
 #brew install gnu-sed --default-names
 # Install Bash 5
 brew 'bash'
-brew 'bash-completion'
+brew 'bash-completion@2'
 # brew 'zsh'
 # brew 'zsh-completions'
 
@@ -39,6 +39,12 @@ brew 'thefuck'
 brew 'tree'
 
 brew 'youtube-dl'
+
+brew 'kubectl'
+brew 'kubectx'
+tap 'johanhaleby/kubetail'
+# kt
+brew 'kubetail', args: ['with-short-names']
 
 tap 'Homebrew/cask-versions'
 
@@ -155,3 +161,5 @@ cask 'homebrew/cask-versions/adoptopenjdk8'
 # IDEs etc.
 # cask 'eclipse-java'
 # cask 'sqlitebrowser'
+
+cask 'google-cloud-sdk'
