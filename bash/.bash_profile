@@ -28,29 +28,19 @@ export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 
-if [ -f $HOME/.bash_secrets ]; then
-  . $HOME/.bash_secrets
-fi
-
-if [ -f $HOME/.bash_aliases ]; then
-  . $HOME/.bash_aliases
-fi
-
-if [ -f $HOME/.bash_prompt ]; then
-  . $HOME/.bash_prompt
-fi
-
-if [ -f $HOME/.bash_complete_alias ]; then
-  . $HOME/.bash_complete_alias
-fi
+for f in $HOME/.{bash_secrets,bash_aliases,bash_prompt,bash_complete_alias}; do
+  [ -f "$f" ] && source "$f";
+done;
+unset f;
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
 
 if [ -d $HOME/.bash_completion.d/ ]; then
   for f in $HOME/.bash_completion.d/*; do
-    . $f
+    source $f
   done
+  unset f
 fi
 
 eval "$(thefuck --alias)"

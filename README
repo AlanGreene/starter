@@ -3,3 +3,7 @@ Very much a work in progress, DO NOT RUN THIS
 To install:
 
 `bash <(curl -L https://dev.alangreene.net/starter)`
+
+or
+
+`bash <(wget -qO- https://dev.alangreene.net/starter)`

@@ -87,7 +87,8 @@ if test ! $(which n); then
 fi
 
 cecho "Stowing files to \$HOME" $cyan
-
+# stows to parent directory by default
+# can change target using `-t ~` for example
 stow --adopt bash
 stow --restow bash
 
