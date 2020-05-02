@@ -303,3 +303,5 @@ function getcertnames() {
     return 1;
   fi;
 }
+
+alias fingerprint="ssh-keygen -l -E md5 -f $1"
