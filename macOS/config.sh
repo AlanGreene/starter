@@ -87,10 +87,35 @@ if test ! $(which n); then
 fi
 
 cecho "Stowing files to \$HOME" $cyan
-# stows to parent directory by default
-# can change target using `-t ~` for example
-stow --adopt bash
-stow --restow bash
+# stow
+# --target (-t): defaults to parent directory
+# --verbose (-v)
+# --simulate
+# --delete (-D)
+# --restow (-R): useful for pruning obsolete symlinks
+common=(
+  bash
+)
+
+nonroot=(
+)
+
+stowit() {
+  cecho "Stowing $1" $cyan
+  stow --adopt $1
+  stow --restow $1
+}
+
+for package in ${common[@]}; do
+  stowit $package
+done
+
+# install only user space folders
+if [ "$(whoami)" != "root" ]; then
+  for package in ${nonroot[@]}; do
+    stowit $package
+  done
+fi
 
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD
