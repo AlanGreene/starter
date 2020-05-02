@@ -1,7 +1,5 @@
 # Install GNU core utilities (those that come with OS X are outdated)
 brew 'coreutils'
-# Install some other useful utilities like `sponge`
-#brew 'moreutils'
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 brew 'findutils'
 # Install GNU `sed`, overwriting the built-in `sed`
@@ -24,21 +22,19 @@ brew 'hub'
 brew 'openssl'
 # brew 'yarn'
 brew 'jq'
-# brew 'nvm'
 brew 'unrar'
 brew 'wget'
 brew 'watch'
 # brew 'homebrew/dupes/openssh'
 brew 'nmap'
 brew 'curl'
-# brew 'heroku-toolbelt'
-# TODO: need to run heroku update to ensure latest version
 # tool to easily access gitignore boilerplates - https://github.com/simonwhitaker/gibo - https://github.com/github/gitignore
 brew 'gibo'
 
 brew 'rsync'
 brew 'ssh-copy-id'
 # brew 'mongodb'
+brew 'stow'
 brew 'thefuck'
 brew 'tree'
 
@@ -63,7 +59,6 @@ cask 'balenaetcher'
 cask 'caffeine'
 # cask 'cheatsheet'
 cask 'cyberduck'
-#cask 'dash'
 cask 'dbeaver-community'
 # cask 'docker-toolbox'
 cask 'docker'

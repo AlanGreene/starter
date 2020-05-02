@@ -20,11 +20,11 @@ export PATH=$PATH:$GOPATH/bin
 #export PATH="$(gem environment gemdir)/bin:$PATH"
 #export PATH=$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin
 
-export $PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-export $PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
-export $PATH=$(brew --prefix curl)/bin:$PATH
-export $PATH=$(brew --prefix rsync)/bin:$PATH
-export $PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
+export PATH=$(brew --prefix curl)/bin:$PATH
+export PATH=$(brew --prefix rsync)/bin:$PATH
+export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 

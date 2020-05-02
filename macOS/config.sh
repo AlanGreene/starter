@@ -81,3 +81,11 @@ if test ! $(which n); then
   # install n and node@lts
   curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts
 fi
+
+cecho "Stowing files to \$HOME" $cyan
+
+stow --adopt bash
+stow --restow bash
+
+cecho "Checking for modified files" $cyan
+git diff-index --exit-code --name-only HEAD
