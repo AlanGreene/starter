@@ -44,3 +44,28 @@ if [ -d $HOME/.bash_completion.d/ ]; then
 fi
 
 eval "$(thefuck --alias)"
+
+shopt_options=(
+  autocd
+  checkwinsize
+  cmdhist
+  complete_fullquote
+  dotglob
+  expand_aliases
+  extglob
+  extquote
+  force_fignore
+  globasciiranges
+  globstar
+  histappend
+  interactive_comments
+  no_empty_cmd_completion
+  nocaseglob
+  progcomp
+  promptvars
+  sourcepath
+)
+
+for option in ${shopt_options[@]}; do
+  shopt -s $option 2> /dev/null
+done
