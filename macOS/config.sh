@@ -56,7 +56,7 @@ brew upgrade
 cecho "Installing homebrew formulae..." $cyan
 cecho "Casks will be linked in /Applications" $cyan
 brew tap homebrew/bundle
-brew bundle --file=${STARTER}/macOS/brew/Brewfile
+brew bundle --no-lock --file=${STARTER}/macOS/brew/Brewfile
 
 # verify cask install
 #brew cask doctor
