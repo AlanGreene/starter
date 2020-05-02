@@ -36,6 +36,7 @@ brew 'ssh-copy-id'
 # brew 'mongodb'
 brew 'stow'
 brew 'thefuck'
+brew 'tmuxinator'
 brew 'tree'
 
 brew 'youtube-dl'
