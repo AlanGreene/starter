@@ -1,7 +1,7 @@
 #!/bin/bash
 set -Eeo pipefail
 
-if [ "$SHELL" != "/bin/bash" ]; then
+if [ "$(basename $SHELL)" != "bash" ]; then
     echo "\$SHELL is currently $SHELL, switching to /bin/bash"
     chsh -s "/bin/bash"
     echo "Restart the terminal and run the script again"

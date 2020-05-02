@@ -68,8 +68,12 @@ brew cleanup
 
 # Switch to using brew-installed bash as default shell
 if ! fgrep -q "$(brew --prefix bash)/bin/bash" /etc/shells; then
-  echo "Switching default shell to bash"
+  echo "Adding brew-installed bash to allowed shells"
   echo "$(brew --prefix bash)/bin/bash" | sudo tee -a /etc/shells
+fi
+
+if [ "$SHELL" != "$(brew --prefix bash)/bin/bash" ]; then
+  echo "Switching default shell to brew-installed bash"
   chsh -s "$(brew --prefix bash)/bin/bash"
 fi
 
