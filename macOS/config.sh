@@ -98,6 +98,7 @@ git diff-index --exit-code --name-only HEAD
 # --restow (-R): useful for pruning obsolete symlinks
 common=(
   bash
+  tmux
 )
 
 nonroot=(
