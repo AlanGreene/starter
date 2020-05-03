@@ -86,6 +86,9 @@ if test ! $(which n); then
   curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts
 fi
 
+cecho "Installing local npm registry" $cyan
+npm i -g verdaccio
+
 cecho "Stowing files to \$HOME" $cyan
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD

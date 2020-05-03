@@ -29,6 +29,7 @@ export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix curl)/bin:$PATH
 export PATH=$(brew --prefix rsync)/bin:$PATH
 export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
+export PATH=$(brew --prefix node)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 
