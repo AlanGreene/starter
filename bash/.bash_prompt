@@ -158,7 +158,7 @@ function prompt_custom() {
   PS1+="\[${reset}\]"
   PS1+=" \$(kube_prompt)"
   PS1+="\n";
-  PS1+="\[${white}\]\$ \[${reset}\]"; # `$` or `#` depending on user (and reset color)
+  PS1+="\[${white}\]\\$ \[${reset}\]"; # `$` or `#` depending on user (and reset color)
   # \$ '#' if effective UID = 0, '$' otherwise
   export PS1;
 
