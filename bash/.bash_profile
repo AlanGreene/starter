@@ -8,6 +8,7 @@ export HISTSIZE='32768'
 export HISTFILESIZE="${HISTSIZE}"
 # Omit duplicates and commands that begin with a space from history, alt. 'ignorespace'
 export HISTCONTROL='ignoreboth'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 export GOPATH=$HOME/workspace/go
 
