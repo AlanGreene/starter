@@ -10,6 +10,9 @@ export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL='ignoreboth'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+export LANG='en_IE.UTF-8'
+export LC_ALL='en_IE.UTF-8'
+
 export GOPATH=$HOME/workspace/go
 
 export PATH="$HOME/.bin:$PATH"
