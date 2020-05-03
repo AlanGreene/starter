@@ -87,6 +87,9 @@ if test ! $(which n); then
 fi
 
 cecho "Stowing files to \$HOME" $cyan
+cecho "Checking for modified files" $cyan
+git diff-index --exit-code --name-only HEAD
+
 # stow
 # --target (-t): defaults to parent directory
 # --verbose (-v)
@@ -98,6 +101,8 @@ common=(
 )
 
 nonroot=(
+  git
+  node
 )
 
 stowit() {

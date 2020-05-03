@@ -67,7 +67,6 @@ cask 'caffeine'
 # cask 'cheatsheet'
 cask 'cyberduck'
 cask 'dbeaver-community'
-# cask 'docker-toolbox'
 cask 'docker'
 
 # Hide status bar icons

@@ -1,0 +1,10 @@
+[user]
+	email = github.com@alangreene.net
+	name = Alan Greene
+	username = AlanGreene
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore
+[push]
+	default = current
