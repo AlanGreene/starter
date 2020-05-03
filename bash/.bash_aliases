@@ -34,25 +34,12 @@ gitpr() {
 # gitpr="git fetch upstream pull/$argv/head:pr$argv;"
 
 # Util
-killWithFire() {
+cleanup() {
   commandName=$1
   commandName="[${commandName:0:1}]${commandName:1}";
   getPid="kill -9 `ps ax | grep ${commandName} | awk '{print \$1}'`";
   echo ${getPid};
   eval ${getPid};
-}
-alias cleanup=killWithFire
-
-gitr() {
-  input=$1
-  userName="${input%:*}";
-  branchName="${input#*:}";
-  remoteAddCommand="git remote add $userName git@github.ibm.com:${userName}/web-client.git";
-  echo ${remoteAddCommand};
-  eval ${remoteAddCommand};
-  fetchCommand="git fetch $userName ${branchName}:${branchName}";
-  echo ${fetchCommand};
-  eval ${fetchCommand};
 }
 
 # NPM
@@ -213,7 +200,7 @@ function gurl() {
   local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
   [[ "$remote" ]] || return
   local user_repo="$(echo "$remote" | perl -pe 's/.*://;s/\.git$//')"
-  echo "https://github.ibm.com/$user_repo"
+  echo "https://github.com/$user_repo"
 }
 
 function gpath() {

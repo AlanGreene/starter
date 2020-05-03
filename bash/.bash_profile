@@ -80,3 +80,7 @@ shopt_options=(
 for option in ${shopt_options[@]}; do
   shopt -s $option 2> /dev/null
 done
+
+if [ "${SSH_TTY}" != "" ] && [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
