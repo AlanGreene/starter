@@ -21,6 +21,7 @@ brew 'hub'
 
 brew 'openssl'
 # brew 'yarn'
+brew 'gron'
 brew 'jq'
 brew 'unrar'
 brew 'wget'
