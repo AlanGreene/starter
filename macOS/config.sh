@@ -125,6 +125,17 @@ if [ "$(whoami)" != "root" ]; then
   for package in ${nonroot[@]}; do
     stowit $package
   done
+
+  cecho "Creating additional directories" $cyan
+  directories=(
+    "$HOME/workspace/sublime-projects"
+    "$HOME/Downloads/torrents/complete"
+    "$HOME/Downloads/torrents/downloading"
+  )
+
+  for i in "${directories[@]}"; do
+    mkdir -p "$i"
+  done
 fi
 
 cecho "Checking for modified files" $cyan
