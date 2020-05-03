@@ -103,6 +103,7 @@ common=(
 nonroot=(
   git
   node
+  ssh
 )
 
 stowit() {
