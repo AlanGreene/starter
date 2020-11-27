@@ -1,0 +1,6 @@
+#!/usr/bin/env js
+
+// This is a sample script to show how
+// we can use modules provided through
+// `./js-globals/`
+console.log(await fetch($1));

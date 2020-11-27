@@ -138,5 +138,12 @@ if [ "$(whoami)" != "root" ]; then
   done
 fi
 
+# install any dependencies for JS scripts
+cecho "Installing dependencies for ~/.bin/" $cyan
+pushd .
+cd $HOME/.bin
+npm i
+popd
+
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD

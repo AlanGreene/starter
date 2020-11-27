@@ -1,0 +1,23 @@
+{
+  "name": "js-scripts",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "private": true,
+  "author": "Alan Greene",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "3.2.25",
+    "js-globals": "file:js-globals",
+    "node-fetch": "2.6.1"
+  },
+  "esm": {
+    "await": true,
+    "force": false,
+    "mode": "all"
+  }
+}

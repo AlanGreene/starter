@@ -1,0 +1,1 @@
+/usr/bin/env -S NODE_PATH="/Users/alan/.bin/node_modules" ESM_OPTIONS="{cache:false}" node -r esm -r js-globals "$@"
