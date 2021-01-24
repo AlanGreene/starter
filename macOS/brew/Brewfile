@@ -48,6 +48,7 @@ brew 'kubectx'
 tap 'johanhaleby/kubetail'
 # kt
 brew 'kubetail', args: ['with-short-names']
+brew 'kind'
 
 tap 'Homebrew/cask-versions'
 
