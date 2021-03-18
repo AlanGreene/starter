@@ -131,5 +131,10 @@ cd $HOME/.bin
 npm i
 popd
 
+cecho "Cleaning up unused shell files" $cyan
+rm -rf $HOME/.bash_sessions
+rm -rf $HOME/.zsh_sessions
+rm -f $HOME/.zsh_history
+
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD
