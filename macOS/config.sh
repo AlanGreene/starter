@@ -13,25 +13,6 @@ trap 'catch $?' EXIT
 # Mac Software Update
 #softwareupdate -i -a
 
-# Install Xcode command line tools, required by git and others
-#
-# the following command opens a software update UI for user interaction so we won't use that
-#xcode-select --install
-
-# check if Xcode command line tools are already installed
-cecho "Checking for Xcode command line tools..." $cyan
-! $(xcode-select -p > /dev/null 2>&1) && {
-    #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-    echo "Installing Xcode command line tools..."
-    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-    PROD=$(softwareupdate -l |
-      grep "Command Line Tools" |
-      head -n 1 | awk -F"*" '{print $2}' |
-      sed -e 's/^ Label: //' |
-      tr -d '\n')
-    softwareupdate -i "$PROD" --verbose;
-}
-
 # Install Homebrew
 if test ! $(which brew); then
     cecho "Installing Homebrew..." $cyan
@@ -81,14 +62,6 @@ fi
 # xattr -r ~/Library/QuickLook
 xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
-if test ! $(which n); then
-  # install n and node@lts
-  curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -y lts
-fi
-
-cecho "Installing local npm registry" $cyan
-npm i -g verdaccio
-
 cecho "Stowing files to \$HOME" $cyan
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD
@@ -128,7 +101,9 @@ if [ "$(whoami)" != "root" ]; then
 
   cecho "Creating additional directories" $cyan
   directories=(
+    "$HOME/workspace/AlanGreene"
     "$HOME/workspace/sublime-projects"
+    "$HOME/Downloads/torrents/archive"
     "$HOME/Downloads/torrents/complete"
     "$HOME/Downloads/torrents/downloading"
   )
@@ -137,6 +112,15 @@ if [ "$(whoami)" != "root" ]; then
     mkdir -p "$i"
   done
 fi
+
+if test ! $(which n); then
+  # install n and node@lts
+  curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -n -y lts
+  . ~/.bash_profile
+fi
+
+cecho "Installing local npm registry" $cyan
+npm i -g verdaccio
 
 # install any dependencies for JS scripts
 cecho "Installing dependencies for ~/.bin/" $cyan

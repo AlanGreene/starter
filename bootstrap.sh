@@ -75,6 +75,25 @@ platformFileLoc="macOS"
 case "$OSTYPE" in
     darwin*)
         cecho "Detected macOS, beginning setup" $cyan
+
+        # Install Xcode command line tools, required by git and others
+        #
+        # the following command opens a software update UI for user interaction so we won't use that
+        #xcode-select --install
+
+        # check if Xcode command line tools are already installed
+        cecho "Checking for Xcode command line tools..." $cyan
+        ! $(xcode-select -p > /dev/null 2>&1) && {
+            #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+            echo "Installing Xcode command line tools..."
+            touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+            PROD=$(softwareupdate -l |
+              grep "Command Line Tools" |
+              head -n 1 | awk -F"*" '{print $2}' |
+              sed -e 's/^ Label: //' |
+              tr -d '\n')
+            softwareupdate -i "$PROD" --verbose;
+        }
         ;;
     linux*)
         cecho "This dotfile starter currently only supports macOS. Linux support coming soon. Exiting." $red
