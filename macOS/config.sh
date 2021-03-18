@@ -136,5 +136,10 @@ rm -rf $HOME/.bash_sessions
 rm -rf $HOME/.zsh_sessions
 rm -f $HOME/.zsh_history
 
+cecho "Enable shell completions provided by brew formulae" $cyan
+
+ln -s $(brew --prefix kubectx)/etc/bash_completion.d/kubectx ~/.bash_completion.d/kubectx
+ln -s $(brew --prefix kubectx)/etc/bash_completion.d/kubens ~/.bash_completion.d/kubens
+
 cecho "Checking for modified files" $cyan
 git diff-index --exit-code --name-only HEAD
