@@ -15,7 +15,7 @@ export LC_ALL='en_IE.UTF-8'
 
 export GOPATH=$HOME/workspace/go
 
-export N_PREFIX=$HOME/.n
+export N_PREFIX=$HOME/.bin/n
 export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$N_PREFIX/bin:$PATH"

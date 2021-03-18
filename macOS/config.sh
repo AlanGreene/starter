@@ -116,8 +116,10 @@ fi
 if test ! $(which n); then
   # install n and node@lts
   curl -L https://git.io/n-install | N_PREFIX=$HOME/.bin/n /bin/bash -s -- -n -y lts
-  . ~/.bash_profile
 fi
+
+export N_PREFIX=$HOME/.bin/n
+export PATH=$PATH:$N_PREFIX/bin
 
 cecho "Installing local npm registry" $cyan
 npm i -g verdaccio
