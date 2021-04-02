@@ -52,7 +52,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM='xterm-256color';
 fi;
 
-prompt_git() {
+git_prompt() {
   local s='';
   local branchName='';
 
@@ -154,7 +154,7 @@ function prompt_custom() {
   PS1+="\[${hostStyle}\]\h"; # host
   PS1+="\[${white}\] in ";
   PS1+="\[${green}\]\w"; # working directory
-  PS1+="\$(prompt_git \"${white} on ${violet}\")"; # Git repository details
+  PS1+="\$(git_prompt \"${white} on ${violet}\")"; # Git repository details
   PS1+="\[${reset}\]"
   PS1+=" \$(kube_prompt)"
   PS1+="\n";
