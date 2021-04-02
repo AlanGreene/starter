@@ -24,8 +24,7 @@ export PATH="$N_PREFIX/bin:$PATH"
 #export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 #export PATH="$(brew --prefix ruby)/bin:$PATH"
 #export PATH="$(gem environment gemdir)/bin:$PATH"
-#export PATH="$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin"
-
+export PATH="$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin"
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix curl)/bin:$PATH
@@ -34,6 +33,10 @@ export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 #export PATH=$(brew --prefix node)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
+export GOROOT=`go env GOROOT`
+
+export KUBECONFIG=$HOME/.kube/config
+export KUBECONFIG_ORIGINAL=$KUBECONFIG
 
 include () {
   [ -r "$1" ] && source "$1"

@@ -9,11 +9,11 @@ alias ll='ls -alh'
 alias mkdir='mkdir -p'
 
 # Shortcuts
-# alias w='cd ~/workspace'
-# alias td='w && cd tektoncd/dashboard'
-# alias tp='w && cd tektoncd/pipeline'
+alias w='cd ~/workspace'
+alias t='w && cd tektoncd/dashboard'
 # alias pd='w && cd some-docker-based-project && eval $(docker-machine env default)'
 # alias e2e='cleanup webdriver; npm run e2e-bvt; cleanup webdriver'
+
 alias hosts="sudo $EDITOR /etc/hosts"
 alias aliases="$EDITOR ~/.bash_aliases"
 
@@ -30,8 +30,6 @@ gitpr() {
   prNum=$1
   git fetch upstream pull/${prNum}/head:pr${prNum} && git checkout pr${prNum}
 }
-
-# gitpr="git fetch upstream pull/$argv/head:pr$argv;"
 
 # Util
 cleanup() {
@@ -104,12 +102,13 @@ done
 
 # Dev
 #alias server="open http://localhost:8000 && python -m SimpleHTTPServer"
+#alias server="curl lama.sh | sh"
 server() {
   port=${1-8000}
   sleep 5 && open "http://localhost:${port}" &
   #python -m SimpleHTTPServer $port
   # updated for python 3
-  python -m http.server
+  python -m http.server $port
 }
 
 # Create a data URL from a file
@@ -142,11 +141,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Faster npm for Europeans (TODO: test this)
 #command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
-
-# http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 7'"
-alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 function volume() {
   local PCT
@@ -229,13 +223,27 @@ alias krm="kubectl delete"
 alias kx="kubectl exec -i -t"
 
 complete -F __start_kubectl k
-complete -F _kube_contexts kc
-complete -F _kube_namespaces kn
+# complete -F _kube_contexts kc
+# complete -F _kube_namespaces kn
+# what's the difference between these and the ones above?
+complete -F _complete_alias kc
+complete -F _complete_alias kn
 complete -F _complete_alias kg
 complete -F _complete_alias kl
 complete -F _complete_alias klf
 complete -F _complete_alias krm
 complete -F _complete_alias kx
+
+function kubeconfig() {
+  if [ -n "$1" ]; then
+    kubeConfigFile=$1
+    touch -a $kubeConfigFile
+  else
+    kubeConfigFile=$KUBECONFIG_ORIGINAL
+  fi
+  export KUBECONFIG=$kubeConfigFile && kubeon
+}
+export -f kubeconfig
 
 # Heroku
 # PSQL UI
