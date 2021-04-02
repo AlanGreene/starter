@@ -116,6 +116,8 @@ cask 'rectangle'
 cask 'spotify'
 # install Sublime Text 3 dev - automatically links subl
 cask 'sublime-text-dev'
+# code
+cask 'visual-studio-code'
 cask 'the-unarchiver'
 cask 'transmit'
 cask 'virtualbox'
