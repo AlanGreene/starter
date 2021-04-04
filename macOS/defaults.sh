@@ -59,6 +59,9 @@ defaults write com.apple.dock tilesize -int 50
 defaults write com.apple.dock wvous-tl-corner -int 5
 defaults write com.apple.dock wvous-tl-modifier -int 0
 
+## Enable Remote Login
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
 ## Activity Monitor
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
