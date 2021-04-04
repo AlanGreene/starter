@@ -67,7 +67,7 @@ cecho "\nAbout to begin setup, enter your password when prompted\n" $yellow
 # Ask for the administrator password upfront
 # and run a keep-alive to update existing `sudo` time stamp until script has finished
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do sudo -v; sleep 60; done 2>/dev/null &
 
 # set default platform
 platformFileLoc="macOS"
@@ -131,6 +131,11 @@ cd $STARTER
 source ${platformFileLoc}/config.sh
 
 cd $STARTLOC
+
+# remove cached sudo credentials
+sudo -K
+# kill background job
+kill $!
 
 cecho "\nDotfiles starter installation complete\n" $green
 cecho "Restart to ensure configuration is properly applied\n" $yellow
