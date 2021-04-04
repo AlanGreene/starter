@@ -49,6 +49,8 @@ tap 'johanhaleby/kubetail'
 brew 'kubetail', args: ['with-short-names']
 brew 'kind'
 
+brew 'starship'
+
 tap 'Homebrew/cask-versions'
 
 # verify cask install

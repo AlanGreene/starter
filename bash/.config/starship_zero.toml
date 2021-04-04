@@ -1,0 +1,6 @@
+add_newline = true
+format = '$character'
+
+[character]
+success_symbol = '\$'
+error_symbol = '\$'

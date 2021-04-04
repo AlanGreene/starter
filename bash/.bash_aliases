@@ -231,6 +231,9 @@ complete -F _complete_alias klf
 complete -F _complete_alias krm
 complete -F _complete_alias kx
 
+alias kubeon="starship config kubernetes.disabled false"
+alias kubeoff="starship config kubernetes.disabled true"
+
 function kubeconfig() {
   if [ -n "$1" ]; then
     kubeConfigFile=$1

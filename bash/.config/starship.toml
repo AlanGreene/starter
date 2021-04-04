@@ -1,0 +1,57 @@
+add_newline = true
+format = '$username$hostname$directory$git_branch$git_commit$git_state$git_status$kubernetes$nodejs$python$gcloud$env_var$custom$line_break$jobs$character'
+
+[character]
+success_symbol = '\$'
+error_symbol = '[\$](bold red)'
+
+[directory]
+format = 'in [$path]($style)([ $read_only]($read_only_style)) '
+style = 'fg:64'
+truncate_to_repo = false
+truncation_length = 100
+truncation_symbol = ''
+
+[directory.substitutions]
+"~/workspace/" = 'github.com/'
+
+[gcloud]
+disabled = true
+
+[git_branch]
+style = 'purple'
+symbol = ''
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_status]
+style = 'bold fg:33'
+
+[hostname]
+format = 'at [$hostname]($style) '
+ssh_only = false
+style = 'bold fg:136'
+
+[kubernetes]
+disabled = true
+format = '[$context](bold fg:166)[:](bold white)[$namespace](bold fg:37) '
+
+[nodejs]
+detect_files = [
+    'package.json',
+    '.nvmrc',
+]
+disabled = true
+
+[python]
+disabled = true
+
+[username]
+format = '[$user]($style) '
+show_always = true
+style_root = 'bold fg:124'
+style_user = 'bold fg:166'
