@@ -6,6 +6,9 @@ cecho "Writing defaults" $cyan
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+## System Preferences ==========
+
+## General
 defaults write -g AppleInterfaceStyle -string "Dark"
 defaults write -g AppleKeyboardUIMode -int 2
 defaults write -g AppleShowScrollBars -string "WhenScrolling"
@@ -13,34 +16,13 @@ defaults write -g AppleShowScrollBars -string "WhenScrolling"
 # Make Chrome the default browser (requires user confirmation)
 open -a "Google Chrome" --args --make-default-browser
 
-defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
-# Disable press-and-hold for keys in favor of key repeat
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-defaults write -g NSAutomaticCapitalizationEnabled -bool FALSE
-defaults write -g NSAutomaticDashSubstitutionEnabled -bool FALSE
-defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool FALSE
-defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool FALSE
-defaults write -g NSAutomaticSpellingCorrectionEnabled -bool FALSE
-defaults write -g NSAutomaticTextCompletionEnabled -bool TRUE
-defaults write -g WebAutomaticSpellingCorrectionEnabled -bool FALSE
-defaults write -g NSQuitAlwaysKeepsWindows -bool TRUE
-
-# disable text replacment
-defaults write -g NSUserDictionaryReplacementItems -array '()'
-sqlite3 ~/Library/Dictionaries/CoreDataUbiquitySupport/${USER}~*/UserDictionary/*/store/UserDictionary.db "delete from ZUSERDICTIONARYENTRY;"
-sqlite3 ~/Library/KeyboardServices/TextReplacements.db "delete from ZTEXTREPLACEMENTENTRY;"
-
-## Dock
+## Dock & Menu Bar
 # clear the dock and set it to autohide on the right
 defaults delete com.apple.dock persistent-apps
 defaults delete com.apple.dock persistent-others
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock minimize-to-application -bool true
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock orientation -string "right"
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 50
@@ -62,8 +44,40 @@ defaults write com.apple.dock tilesize -int 50
 defaults write com.apple.dock wvous-tl-corner -int 5
 defaults write com.apple.dock wvous-tl-modifier -int 0
 
-## Enable Remote Login
+## Mission Control
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+## Security & Privacy
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+## Keyboard
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
+# Disable press-and-hold for keys in favor of key repeat
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+defaults write -g NSAutomaticCapitalizationEnabled -bool FALSE
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool FALSE
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool FALSE
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool FALSE
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool FALSE
+defaults write -g NSAutomaticTextCompletionEnabled -bool TRUE
+defaults write -g WebAutomaticSpellingCorrectionEnabled -bool FALSE
+defaults write -g NSQuitAlwaysKeepsWindows -bool TRUE
+
+# disable text replacment
+defaults write -g NSUserDictionaryReplacementItems -array '()'
+sqlite3 ~/Library/Dictionaries/CoreDataUbiquitySupport/${USER}~*/UserDictionary/*/store/UserDictionary.db "delete from ZUSERDICTIONARYENTRY;"
+sqlite3 ~/Library/KeyboardServices/TextReplacements.db "delete from ZTEXTREPLACEMENTENTRY;"
+
+## Sharing
+# Enable Remote Login
 sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+## Apps ==========
 
 ## Activity Monitor
 # Show the main window when launching Activity Monitor
