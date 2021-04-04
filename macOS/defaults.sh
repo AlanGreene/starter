@@ -10,6 +10,9 @@ defaults write -g AppleInterfaceStyle -string "Dark"
 defaults write -g AppleKeyboardUIMode -int 2
 defaults write -g AppleShowScrollBars -string "WhenScrolling"
 
+# Make Chrome the default browser (requires user confirmation)
+open -a "Google Chrome" --args --make-default-browser
+
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 # Disable press-and-hold for keys in favor of key repeat
