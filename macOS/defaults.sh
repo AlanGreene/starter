@@ -221,7 +221,7 @@ defaults write org.m0k.transmission DownloadLocationConstant -bool true
 defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/torrents/downloading"
 defaults write org.m0k.transmission MagnetOpenAsk -bool false
 defaults write org.m0k.transmission PEXGlobal -bool false
-# defaults write org.m0k.transmission RandomPort -bool false
+defaults write org.m0k.transmission RandomPort -bool false
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
 defaults write org.m0k.transmission WarningDonate -bool false
 defaults write org.m0k.transmission WarningLegal -bool false
