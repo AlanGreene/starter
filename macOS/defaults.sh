@@ -181,6 +181,23 @@ defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool false
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
+## Transmission
+defaults write org.m0k.transmission AutoImport -bool true
+defaults write org.m0k.transmission AutoImportDirectory -string "${HOME}/Downloads"
+defaults write org.m0k.transmission BindPort -int 51413
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+defaults write org.m0k.transmission DHTGlobal -bool false
+defaults write org.m0k.transmission DownloadAsk -bool false
+defaults write org.m0k.transmission DownloadFolder -string "${HOME}/Downloads/torrents/complete"
+defaults write org.m0k.transmission DownloadLocationConstant -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/torrents/downloading"
+defaults write org.m0k.transmission MagnetOpenAsk -bool false
+defaults write org.m0k.transmission PEXGlobal -bool false
+# defaults write org.m0k.transmission RandomPort -bool false
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission WarningDonate -bool false
+defaults write org.m0k.transmission WarningLegal -bool false
+
 ## Kill any affected apps to ensure the settings are applied
 for app in "Activity Monitor" \
 	"cfprefsd" \
