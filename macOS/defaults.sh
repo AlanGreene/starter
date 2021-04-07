@@ -156,11 +156,23 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	OpenWith -bool true \
 	Privileges -bool true
 
+## TextEdit
+# Use plain text mode for new documents
+defaults write com.apple.TextEdit RichText -bool false
+# Display HTML files as HTML code instead of formatted text
+defaults write com.apple.TextEdit IngoreHTML -bool true
+# Don't automatically add .txt extension to files
+defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool false
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
 ## Kill any affected apps to ensure the settings are applied
 for app in "Activity Monitor" \
 	"cfprefsd" \
 	"Dock" \
 	"Finder" \
-	"SystemUIServer"; do
+	"SystemUIServer" \
+	"TextEdit"; do
 	killall "${app}" &> /dev/null
 done
