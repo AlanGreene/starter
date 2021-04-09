@@ -13,7 +13,7 @@ truncation_length = 100
 truncation_symbol = ''
 
 [directory.substitutions]
-"~/workspace/" = 'github.com/'
+"~/workspace/github.com" = "github.com"
 
 [gcloud]
 disabled = true

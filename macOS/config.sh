@@ -101,7 +101,7 @@ if [ "$(whoami)" != "root" ]; then
 
   cecho "Creating additional directories" $cyan
   directories=(
-    "$HOME/workspace/AlanGreene"
+    "$HOME/workspace/github.com/AlanGreene"
     "$HOME/workspace/sublime-projects"
     "$HOME/Downloads/torrents/archive"
     "$HOME/Downloads/torrents/complete"

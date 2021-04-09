@@ -1,12 +1,14 @@
 [user]
-	email = github.com@alangreene.net
-	name = Alan Greene
-	username = AlanGreene
+  email = github.com@alangreene.net
+  name = Alan Greene
+  username = AlanGreene
 [color]
-	ui = auto
+  ui = auto
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [pull]
-	ff = only
+  ff = only
 [push]
-	default = current
+  default = current
+[includeIf "gitdir:~/workspace/git-work/"]
+  path = ~/.gitconfig-work

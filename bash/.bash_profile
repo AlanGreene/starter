@@ -16,7 +16,7 @@ export LC_ALL='en_IE.UTF-8'
 export GOPATH=$HOME/workspace/go
 
 export N_PREFIX=$HOME/.bin/n
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/.bin.local:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$N_PREFIX/bin:$PATH"
 #export PATH="$PATH:$HOME/workspace/public/kui/bin"
@@ -30,7 +30,6 @@ export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix curl)/bin:$PATH
 export PATH=$(brew --prefix rsync)/bin:$PATH
 export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
-export PATH=$(brew --prefix node)/bin:$PATH
 
 export KO_DOCKER_REPO='ko.local'
 export GOROOT=`go env GOROOT`
@@ -42,7 +41,7 @@ include () {
   [ -r "$1" ] && source "$1"
 }
 
-for f in $HOME/.{bash_secrets,bash_complete_alias,bash_aliases,bash_prompt}; do
+for f in $HOME/.{bash_secrets,bash_complete_alias,bash_aliases,bash_aliases.local,bash_env.local,bash_prompt}; do
   include "$f";
 done;
 unset f;

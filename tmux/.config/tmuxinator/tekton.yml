@@ -1,7 +1,7 @@
 # /Users/alan/.config/tmuxinator/tekton.yml
 
 name: tekton
-root: ~/workspace/tektoncd/dashboard
+root: ~/workspace/github.com/tektoncd/dashboard
 
 # Optional tmux socket
 # socket_name: foo
@@ -52,24 +52,20 @@ windows:
       # synchronize: after
       panes:
         - npm start
-        - 
+        -
   - test:
       layout: even-horizontal
       panes:
         - npm t -- --watchAll
-        - 
+        -
   - kube:
       layout: even-horizontal
       panes:
         - kubectl --namespace tekton-pipelines port-forward service/tekton-dashboard 9097:9097
-        - 
-  - go:
-      root: ~/workspace/go/src/github.com/tektoncd/dashboard
-      panes:
-        - echo 'npm run build_ko' && echo 'kustomize build overlays/dev | ko apply - f -'
+        -
   - website:
       layout: even-horizontal
-      root: ~/workspace/tektoncd/website
+      root: ~/workspace/github.com/tektoncd/website
       panes:
         - echo 'hugo server'
         - echo 'python sync/sync.py'

@@ -10,7 +10,7 @@ alias mkdir='mkdir -p'
 
 # Shortcuts
 alias w='cd ~/workspace'
-alias t='w && cd tektoncd/dashboard'
+alias t='w && cd github.com/tektoncd/dashboard'
 # alias pd='w && cd some-docker-based-project && eval $(docker-machine env default)'
 # alias e2e='cleanup webdriver; npm run e2e-bvt; cleanup webdriver'
 
@@ -34,7 +34,7 @@ gitpr() {
 # Util
 cleanup() {
   commandName=$1
-  commandName="[${commandName:0:1}]${commandName:1}";
+  commandName="[${commandName:0:1}]${commandName:1}"; # avoids matching the `grep` process itself
   getPid="kill -9 `ps ax | grep ${commandName} | awk '{print \$1}'`";
   echo ${getPid};
   eval ${getPid};
@@ -113,17 +113,16 @@ server() {
 
 # Create a data URL from a file
 function dataurl() {
-    local mimeType=$(file -b --mime-type "$1")
-    if [[ $mimeType == text/* ]]; then
-        mimeType="${mimeType};charset=utf-8"
-    fi
-    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+  local mimeType=$(file -b --mime-type "$1")
+  if [[ $mimeType == text/* ]]; then
+    mimeType="${mimeType};charset=utf-8"
+  fi
+  echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
 # Create a new directory and enter it
 function mkd() {
   mkdir -p "$@" && cd "$@"
-  # mkdir -p "$@" && cd "$_";
 }
 
 # Change working directory to the top-most Finder window location
@@ -187,15 +186,6 @@ function glr() {
 #AWK
 #  )" | less -F
 #}
-
-# GitHub URL for current repo.
-function gurl() {
-  local remotename="${@:-origin}"
-  local remote="$(git remote -v | awk '/^'"$remotename"'.*\(push\)$/ {print $2}')"
-  [[ "$remote" ]] || return
-  local user_repo="$(echo "$remote" | perl -pe 's/.*://;s/\.git$//')"
-  echo "https://github.com/$user_repo"
-}
 
 function gpath() {
   local pathFromGitRoot="$(git rev-parse --show-prefix)"
