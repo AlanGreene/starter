@@ -41,10 +41,19 @@ include () {
   [ -r "$1" ] && source "$1"
 }
 
-for f in $HOME/.{bash_secrets,bash_complete_alias,bash_aliases,bash_aliases.local,bash_env.local,bash_prompt}; do
-  include "$f";
-done;
-unset f;
+files=(
+  "$HOME/.bash_secrets"
+  "$HOME/.bash_complete_alias"
+  "$HOME/.bash_aliases"
+  "$HOME/.bash_aliases.local"
+  "$HOME/.bash_env.local"
+  "$HOME/.bash_prompt"
+)
+
+for f in "${files[@]}"; do
+  include "$f"
+done
+unset f
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 include "$(brew --prefix)/etc/profile.d/bash_completion.sh"
