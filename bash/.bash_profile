@@ -72,9 +72,12 @@ eval "$(thefuck --alias)"
 
 shopt_options=(
   autocd
+  cdable_vars
+  cdspell
   checkwinsize
   cmdhist
   complete_fullquote
+  dirspell
   dotglob
   expand_aliases
   extglob
@@ -94,6 +97,14 @@ shopt_options=(
 for option in ${shopt_options[@]}; do
   shopt -s $option 2> /dev/null
 done
+
+# Prevent file overwrite on stdout redirection
+# Use `>|` to force redirection to an existing file
+set -o noclobber
+
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+bind Space:magic-space
 
 if [ "${SSH_TTY}" != "" ] && [ -z "$TMUX" ]; then
   tmux attach -t default || tmux new -s default
