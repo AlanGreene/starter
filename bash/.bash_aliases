@@ -25,9 +25,21 @@ proxyssl() {
   sudo local-ssl-proxy --source 443 --target ${1:-8000}
 }
 
-# Checkout a PR by number
+# Checkout a PR by number, or default to the PR in the current active Chrome tab
 gitpr() {
-  prNum=$1
+  if [ -n "$1" ]; then
+    prNum=$1
+  else
+    url=$(chromeURL)
+    if [[ $url == *"https://github.com"* && $url == *"/pull/"* ]]; then
+      prNumAndFragment=${url##*/}
+      prNum=${prNumAndFragment%%\#*}
+    else
+      echo "GitHub pull request not found in foreground tab: $url"
+      return 1
+    fi
+  fi
+  echo "Checking out PR ${prNum}…"
   git fetch upstream pull/${prNum}/head:pr${prNum} && git checkout pr${prNum}
 }
 
@@ -158,6 +170,10 @@ function browsers(){
   opera $1
   firefox $1
   safari $1
+}
+
+chromeURL() {
+  osascript -e "tell application \"Google Chrome\" to get URL of active tab of front window"
 }
 
 # git stats (lines changed, etc.)
