@@ -94,11 +94,11 @@ sudo mdutil -E / > /dev/null
 
 ## Accessibility
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess closeViewScrollWheelModifiersInt -int 262144
+defaults write com.apple.UniversalAccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.UniversalAccess closeViewScrollWheelModifiersInt -int 262144
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+defaults write com.apple.UniversalAccess closeViewZoomFollowsFocus -bool true
 
 ## Security & Privacy
 # Require password immediately after sleep or screen saver begins
