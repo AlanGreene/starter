@@ -144,3 +144,6 @@ unset currentURL
 
 cecho "\nDotfiles starter installation complete\n" $green
 cecho "Restart to ensure configuration is properly applied\n" $yellow
+
+cecho "Cleaning up environment\n" $cyan
+unset black red green yellow blue magenta cyan white reset
