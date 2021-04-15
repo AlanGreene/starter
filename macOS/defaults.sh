@@ -137,7 +137,7 @@ defaults write -g NSQuitAlwaysKeepsWindows -bool TRUE
 
 # disable text replacment
 defaults write -g NSUserDictionaryReplacementItems -array '()'
-sqlite3 ~/Library/Dictionaries/CoreDataUbiquitySupport/${USER}~*/UserDictionary/*/store/UserDictionary.db "delete from ZUSERDICTIONARYENTRY;"
+# sqlite3 ~/Library/Dictionaries/CoreDataUbiquitySupport/${USER}~*/UserDictionary/*/store/UserDictionary.db "delete from ZUSERDICTIONARYENTRY;"
 sqlite3 ~/Library/KeyboardServices/TextReplacements.db "delete from ZTEXTREPLACEMENTENTRY;"
 
 ## Trackpad
