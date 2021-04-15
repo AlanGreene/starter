@@ -86,7 +86,7 @@ defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
 	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+killall mds > /dev/null 2>&1 || true
 # Make sure indexing is enabled for the main volume
 sudo mdutil -i on / > /dev/null
 # Rebuild the index from scratch
@@ -149,7 +149,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 
 ## Sharing
 # Enable Remote Login
-sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist || true
 
 ## Apps ==========
 
@@ -246,5 +246,5 @@ for app in "Activity Monitor" \
 	"Finder" \
 	"SystemUIServer" \
 	"TextEdit"; do
-	killall "${app}" &> /dev/null
+	killall "${app}" &> /dev/null || true
 done
