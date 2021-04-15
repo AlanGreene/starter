@@ -18,8 +18,9 @@ open -a "Google Chrome" --args --make-default-browser
 
 ## Dock & Menu Bar
 # clear the dock and set it to autohide on the right
-defaults delete com.apple.dock persistent-apps
-defaults delete com.apple.dock persistent-others
+# defaults delete com.apple.dock persistent-apps
+# defaults delete com.apple.dock persistent-others
+defaults write com.apple.dock static-only -bool true
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock magnification -bool true
 defaults write com.apple.dock minimize-to-application -bool true
