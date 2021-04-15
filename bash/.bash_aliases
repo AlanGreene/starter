@@ -8,6 +8,11 @@ alias _='sudo'
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
 
+# Copy w/ progress
+cp_p () {
+  rsync -WavP --human-readable --progress $1 $2
+}
+
 # Shortcuts
 alias w='cd ~/workspace'
 alias t='w && cd github.com/tektoncd/dashboard'
