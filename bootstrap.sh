@@ -137,5 +137,10 @@ sudo -K
 # kill background job
 kill $!
 
+cecho "Updating the starter repo origin URL" $cyan
+currentURL=$(git remote get-url origin)
+git remote set-url origin "git@github.com:${currentURL##*github.com/}"
+unset currentURL
+
 cecho "\nDotfiles starter installation complete\n" $green
 cecho "Restart to ensure configuration is properly applied\n" $yellow
