@@ -64,6 +64,13 @@ function prompt_custom() {
   eval "$(starship init bash)"
   PS2="\[${yellow}\]→ \[${reset}\]";
   export PS2;    
+
+  # From https://github.com/paulirish/dotfiles/blob/de11baa64eea937a0472de785473018fc50f5350/.bash_prompt#L154-L164
+  # Debug prompt string (when using `set -x`)
+  # -----------------------------------------
+  # The first character (+) is used and repeated for stack depth
+  # Then, we log the current time, filename and line number, followed by function name, followed by actual source line
+  export PS4='+ \011\e[1;30m\t\011\e[1;34m${BASH_SOURCE}\e[0m:\e[1;36m${LINENO}\e[0m \011 ${FUNCNAME[0]:+\e[0;35m${FUNCNAME[0]}\e[1;30m()\e[0m:\011\011 }'
 }
 
 prompt_custom
