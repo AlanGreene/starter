@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -Eeo pipefail
 
 if [ "$(basename $SHELL)" != "bash" ]; then
@@ -32,11 +32,11 @@ reset=`tput sgr0`
 # tput rmso    # Exit standout mode
 
 function cecho() {
-    defaultMsg="No message passed"
-    message=${1:-$defaultMsg}
-    color=${2:-$black}
+  defaultMsg="No message passed"
+  message=${1:-$defaultMsg}
+  color=${2:-$black}
 
-    echo -e "$color$message$reset"
+  echo -e "$color$message$reset"
 }
 
 # echo an error message before exiting
@@ -53,7 +53,7 @@ trap 'catch $?' EXIT
 ###
 
 if [ ! -n "$STARTER" ]; then
-    STARTER=~/.starter
+  STARTER=~/.starter
 fi
 
 #if [ -d "$STARTER" ]; then
@@ -62,73 +62,134 @@ fi
 #    exit
 #fi
 
-cecho "\nAbout to begin setup, enter your password when prompted\n" $yellow
+cecho "\nStarting setup, enter your password when prompted\n" $yellow
 
 # Ask for the administrator password upfront
 # and run a keep-alive to update existing `sudo` time stamp until script has finished
 sudo -v
 while true; do sudo -v; sleep 60; done 2>/dev/null &
 
-# set default platform
-platformFileLoc="macOS"
+get_os() {
+  local os=""
+  local kernelName=""
 
-case "$OSTYPE" in
-    darwin*)
-        cecho "Detected macOS, beginning setup" $cyan
+  kernelName="$(uname -s)"
+  if [ "$kernelName" == "Darwin" ]; then
+    os="macOS"
+  elif [ "$kernelName" == "Linux" ] && \
+       [ -e "/etc/os-release" ]; then
+    os="$(. /etc/os-release; printf "%s" "$ID")"
+  else
+    os="$kernelName"
+  fi
 
-        # Install Xcode command line tools, required by git and others
-        #
-        # the following command opens a software update UI for user interaction so we won't use that
-        #xcode-select --install
+  printf "%s" "$os"
+}
 
-        # check if Xcode command line tools are already installed
-        cecho "Checking for Xcode command line tools..." $cyan
-        ! $(xcode-select -p > /dev/null 2>&1) && {
-            #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
-            echo "Installing Xcode command line tools..."
-            touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-            PROD=$(softwareupdate -l |
-              grep "Command Line Tools" |
-              head -n 1 | awk -F"*" '{print $2}' |
-              sed -e 's/^ Label: //' |
-              tr -d '\n')
-            softwareupdate -i "$PROD" --verbose;
-        }
-        ;;
-    linux*)
-        cecho "This dotfile starter currently only supports macOS. Linux support coming soon. Exiting." $red
-        exit 1
-        ;;
-    *)
-        cecho "Unsupported: $OSTYPE" $red
-        cecho "This dotfile starter currently only supports macOS. Exiting." $red
-        exit 1
-        ;;
+get_os_version() {
+  local os=""
+  local version=""
+
+  os="$(get_os)"
+
+  if [ "$os" == "macOS" ]; then
+    version="$(sw_vers -productVersion)"
+  elif [ -e "/etc/os-release" ]; then
+    version="$(. /etc/os-release; printf "%s" "$VERSION_ID")"
+  fi
+
+  printf "%s" "$version"
+}
+
+is_supported_version() {
+  [ "$1" = "`echo -e "$1\n$2" | sort -V | tail -n1`" ]
+}
+
+min_version_macOS="10.15.3"
+min_version_ubuntu="18.04"
+# Associative arrays require bash 4+ which may not be
+# available before this script runs (macOS stuck on bash 3)
+# declare -A min_versions=(
+#   [macOS]="10.15"
+#   [ubuntu]="20.04"
+# )
+
+verify_os() {
+  local os_name="$(get_os)"
+  local os_version="$(get_os_version)"
+  # local min_version="${min_versions[$os_name]}"
+  local min_version_var="min_version_$os_name"
+  local min_version=${!min_version_var}
+
+  if [ -n "$min_version" ] && is_supported_version "$os_version" "$min_version"; then
+    cecho "Detected $os_name $os_version, proceeding…" $cyan
+    return 0
+  fi
+
+  cecho "Unsupported OS: $os_name, version: ${os_version}. Exiting." $red
+  if [ -n "$min_version" ]; then
+    cecho "Minimum supported version: $min_version" $cyan
+  fi
+  return 1
+}
+
+verify_os || exit 1
+
+os="$(get_os)"
+case $os in
+  macOS)
+    # Install Xcode command line tools, required by git and others
+    #
+    # the following command opens a software update UI for user interaction so we won't use that
+    #xcode-select --install
+
+    # check if Xcode command line tools are already installed
+    cecho "Checking for Xcode command line tools…" $cyan
+    ! $(xcode-select -p > /dev/null 2>&1) && {
+        #instead we use this neat trick from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/xcode-cli-tools.sh
+        echo "Installing Xcode command line tools…"
+        touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+        PROD=$(softwareupdate -l |
+          grep "Command Line Tools" |
+          head -n 1 | awk -F"*" '{print $2}' |
+          sed -e 's/^ Label: //' |
+          tr -d '\n')
+        softwareupdate -i "$PROD" --verbose;
+    }
+    ;;
+  ubuntu)
+    cecho "This dotfile starter currently only supports macOS. Ubuntu support coming soon. Exiting." $red
+    exit 1
+    ;;
+  *)
+    cecho "This dotfile starter currently only supports macOS. Exiting." $red
+    exit 1
+    ;;
 esac
 
 STARTLOC=`pwd`
 
 if [ ! -d "$STARTER" ]; then
-    cecho "Cloning dotfiles starter..." $cyan
-    hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.com/AlanGreene/starter.git $STARTER || {
-        cecho "git not installed" $red
-        exit
-    }
+  cecho "Cloning dotfiles starter…" $cyan
+  hash git >/dev/null 2>&1 && env git clone --depth=1 --recursive https://github.com/AlanGreene/starter.git $STARTER || {
+    cecho "git not installed" $red
+    exit
+  }
 else
-    cecho "$STARTER already exists, press ENTER to continue, ^C to exit" $yellow
-    read
-    cecho "Checking status of $STARTER" $cyan
-    cd $STARTER
-    cecho "Checking for modified files" $cyan
-    git diff-index --exit-code --name-only HEAD
-    cecho "Updating $STARTER" $cyan
-    git pull
-    cecho "$STARTER updated" $green
+  cecho "$STARTER already exists, press ENTER to continue, ^C to exit" $yellow
+  read
+  cecho "Checking status of $STARTER" $cyan
+  cd $STARTER
+  cecho "Checking for modified files" $cyan
+  git diff-index --exit-code --name-only HEAD
+  cecho "Updating $STARTER" $cyan
+  git pull
+  cecho "$STARTER updated" $green
 fi
 
 cd $STARTER
 
-source ${platformFileLoc}/config.sh
+source ${os}/config.sh
 
 cd $STARTLOC
 
