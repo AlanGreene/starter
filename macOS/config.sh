@@ -138,14 +138,6 @@ rm -f $HOME/.zsh_history
 
 cecho "Enable shell completions provided by brew formulae" $cyan
 
-if [ ! -f ~/.bash_completion.d/kubectx ]; then
-  ln -s $(brew --prefix kubectx)/etc/bash_completion.d/kubectx ~/.bash_completion.d/kubectx
-fi
-
-if [ ! -f ~/.bash_completion.d/kubens ]; then
-  ln -s $(brew --prefix kubectx)/etc/bash_completion.d/kubens ~/.bash_completion.d/kubens
-fi
-
 cecho "Configuring macOS preferences" $cyan
 source ${STARTER}/macOS/defaults.sh
 

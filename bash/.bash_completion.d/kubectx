@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+source $(brew --prefix kubectx)/etc/bash_completion.d/kubectx

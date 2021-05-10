@@ -13,5 +13,3 @@ Thumbs.db
 .Trashes
 
 bash/.bin/n
-bash/.bash_completion.d/kubectx
-bash/.bash_completion.d/kubens
