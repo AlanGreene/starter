@@ -16,6 +16,7 @@ brew 'ack'
 brew 'bat'
 brew 'git'
 brew 'hub'
+brew 'gh'
 
 # Mac App Store
 # brew 'mas'
