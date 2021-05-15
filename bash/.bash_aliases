@@ -7,6 +7,7 @@ alias _='sudo'
 
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
+alias diff='diff -y --suppress-common-lines'
 
 # Copy w/ progress
 cp_p () {
