@@ -14,3 +14,5 @@
   default = current
 [includeIf "gitdir:~/workspace/git-work/"]
   path = ~/.gitconfig-work
+[alias]
+  sync = !git pull upstream HEAD && git push origin HEAD
