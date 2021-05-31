@@ -232,6 +232,7 @@ alias kl="kubectl logs"
 alias klf="kubectl logs -f"
 alias kn="kubens"
 alias krm="kubectl delete"
+alias krr="kubectl rollout restart deploy"
 alias kx="kubectl exec -i -t"
 
 complete -F __start_kubectl k
@@ -241,6 +242,7 @@ complete -F _complete_alias kg
 complete -F _complete_alias kl
 complete -F _complete_alias klf
 complete -F _complete_alias krm
+complete -F _complete_alias krr
 complete -F _complete_alias kx
 
 alias kubeon="starship config kubernetes.disabled false"
