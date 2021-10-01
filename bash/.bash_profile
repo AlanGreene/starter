@@ -30,8 +30,10 @@ export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix curl)/bin:$PATH
 export PATH=$(brew --prefix rsync)/bin:$PATH
 export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
+export PATH=$PATH:/usr/local/sbin
 
-export KO_DOCKER_REPO='ko.local'
+export KO_DOCKER_REPO='kind.local'
+export KIND_CLUSTER_NAME='tekton-dashboard'
 export GOROOT=`go env GOROOT`
 
 export KUBECONFIG=$HOME/.kube/config

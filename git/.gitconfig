@@ -14,5 +14,8 @@
   default = current
 [includeIf "gitdir:~/workspace/git-work/"]
   path = ~/.gitconfig-work
+[url "git+ssh://git@github.ibm.com"]
+  insteadOf = https://github.ibm.com
 [alias]
+  co = checkout
   sync = !git pull upstream HEAD && git push origin HEAD
