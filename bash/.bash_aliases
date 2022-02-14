@@ -20,6 +20,8 @@ alias t='w && cd github.com/tektoncd/dashboard'
 # alias pd='w && cd some-docker-based-project && eval $(docker-machine env default)'
 # alias e2e='cleanup webdriver; npm run e2e-bvt; cleanup webdriver'
 
+alias dashboard-nightly-release='kubectl create job -n default --from=cronjob/nightly-cron-trigger-dashboard-nightly-release dashboard-nightly-$(date +"%Y%m%d-%H%M")'
+
 alias hosts="sudo $EDITOR /etc/hosts"
 alias aliases="$EDITOR ~/.bash_aliases"
 
