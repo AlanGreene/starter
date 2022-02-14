@@ -77,6 +77,9 @@ alias npms="npm --loglevel error"
 
 # npm rebuild
 
+# enable 'work' config (~/.npmrc.work)
+alias npmwork="ln -s ~/.npmrc.work .npmrc"
+
 # Browsers
 alias safari="open -a safari"
 alias firefox="open -a firefox"
