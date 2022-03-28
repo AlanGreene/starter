@@ -5,6 +5,7 @@
 alias sudo='sudo '
 alias _='sudo'
 
+alias watch='watch '
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
 alias diff='diff -y --suppress-common-lines'
