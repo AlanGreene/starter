@@ -105,7 +105,7 @@ is_supported_version() {
   [ "$1" = "`echo -e "$1\n$2" | sort -V | tail -n1`" ]
 }
 
-min_version_macOS="10.15.3"
+min_version_macOS="12.3.1"
 min_version_ubuntu="18.04"
 # Associative arrays require bash 4+ which may not be
 # available before this script runs (macOS stuck on bash 3)
