@@ -132,6 +132,10 @@ cd $HOME/.bin
 npm i
 popd
 
+cecho "Install kustomize" $cyan
+go get sigs.k8s.io/kustomize/kustomize/v3
+GO111MODULE=on go install sigs.k8s.io/kustomize/kustomize/v3
+
 cecho "Cleaning up unused shell files" $cyan
 rm -rf $HOME/.bash_sessions
 rm -rf $HOME/.zsh_sessions
