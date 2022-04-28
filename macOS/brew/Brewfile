@@ -162,6 +162,7 @@ cask 'suspicious-package'
 cask 'homebrew/cask-versions/adoptopenjdk8'
 # brew 'maven'
 # brew 'gradle'
+brew 'go'
 
 # IDEs etc.
 # cask 'eclipse-java'
