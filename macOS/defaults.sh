@@ -188,7 +188,8 @@ defaults write com.apple.finder ShowPathbar -bool false
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	General -bool true \
 	OpenWith -bool true \
-	Privileges -bool true
+	Privileges -bool true \
+	Preview -bool false
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
