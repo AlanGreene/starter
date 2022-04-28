@@ -12,6 +12,7 @@ trap 'catch $?' EXIT
 
 # Mac Software Update
 #softwareupdate -i -a
+softwareupdate --install-rosetta
 
 # Install Homebrew
 if test ! $(which brew); then
