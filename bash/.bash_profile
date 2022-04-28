@@ -15,10 +15,14 @@ export LC_ALL='en_IE.UTF-8'
 
 export GOPATH=$HOME/workspace/go
 
-export N_PREFIX=$HOME/.bin/n
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.bin:$HOME/.bin.local:$PATH"
+
+export N_PREFIX=$HOME/.bin/n
+#export PATH="$N_PREFIX/bin:$PATH"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
 export PATH="$PATH:$GOPATH/bin"
-export PATH="$N_PREFIX/bin:$PATH"
 #export PATH="$PATH:$HOME/workspace/public/kui/bin"
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 #export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
