@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-source <(kubectl completion bash)

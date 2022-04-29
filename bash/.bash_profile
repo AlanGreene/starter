@@ -61,7 +61,6 @@ for f in "${files[@]}"; do
 done
 unset f
 
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 include "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
 if [ -d $HOME/.bash_completion.d/ ]; then
