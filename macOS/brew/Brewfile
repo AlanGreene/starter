@@ -108,7 +108,6 @@ cask 'keybase'
 cask 'mockoon'
 
 cask 'mounty'
-cask 'multifirefox'
 cask 'ngrok'
 #cask 'omnigraffle'
 
