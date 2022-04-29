@@ -145,6 +145,9 @@ cask '1password'
 # new versions only available from Mac AppStore
 cask 'ccmenu'
 
+# screencapture and annotation tool
+cask 'skitch'
+
 # Install useful Quick Look plugins for developers
 # See https://github.com/sindresorhus/quick-look-plugins
 cask 'qlcolorcode'
