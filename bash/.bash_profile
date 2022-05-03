@@ -28,7 +28,7 @@ export PATH="$PATH:$GOPATH/bin"
 #export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 #export PATH="$(brew --prefix ruby)/bin:$PATH"
 #export PATH="$(gem environment gemdir)/bin:$PATH"
-export PATH="$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin"
+#export PATH="$PATH:$HOME/workspace/openshift/crc:$HOME/.crc/bin"
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix findutils)/libexec/gnubin:$PATH
 export PATH=$(brew --prefix curl)/bin:$PATH
@@ -46,6 +46,10 @@ export KUBECONFIG_ORIGINAL=$KUBECONFIG
 
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 include () {
   [ -r "$1" ] && source "$1"
