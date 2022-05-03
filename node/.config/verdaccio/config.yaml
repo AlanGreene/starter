@@ -44,6 +44,11 @@ packages:
     unpublish: $authenticated
     proxy: npmjs
 
+  '@tektoncd/*':
+    access: $all
+    publish: $anonymous
+    proxy: npmjs
+
   '**':
     # allow all users (including non-authenticated users) to read and
     # publish all packages
