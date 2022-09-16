@@ -132,7 +132,7 @@ server() {
   sleep 5 && open "http://localhost:${port}" &
   #python -m SimpleHTTPServer $port
   # updated for python 3
-  python -m http.server $port
+  python3 -m http.server $port
 }
 
 # Create a data URL from a file
