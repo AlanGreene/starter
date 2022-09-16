@@ -35,6 +35,7 @@ export PATH=$(brew --prefix curl)/bin:$PATH
 export PATH=$(brew --prefix rsync)/bin:$PATH
 export PATH=$(brew --prefix ssh-copy-id)/bin:$PATH
 export PATH=$PATH:/usr/local/sbin
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 export KO_DOCKER_REPO='kind.local'
 export KIND_CLUSTER_NAME='tekton-dashboard'
@@ -42,6 +43,9 @@ export GOROOT=`go env GOROOT`
 
 export KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG_ORIGINAL=$KUBECONFIG
+
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 include () {
   [ -r "$1" ] && source "$1"
