@@ -15,7 +15,7 @@ export LC_ALL='en_IE.UTF-8'
 
 export GOPATH=$HOME/workspace/go
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 export PATH="$HOME/.bin:$HOME/.bin.local:$PATH"
 
 export N_PREFIX=$HOME/.bin/n
