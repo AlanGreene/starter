@@ -10,6 +10,7 @@ alias ll='ls -alh'
 alias mkdir='mkdir -p'
 alias tmpdir='cd $(mktemp -d)'
 alias diff='diff -y --suppress-common-lines'
+alias nosleep='caffeinate -disu -t 1800'
 
 # Copy w/ progress
 cp_p () {
