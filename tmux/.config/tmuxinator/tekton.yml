@@ -56,7 +56,7 @@ windows:
   - test:
       layout: even-horizontal
       panes:
-        - npm t -- --watchAll
+        - npm t
         -
   - kube:
       layout: even-horizontal
