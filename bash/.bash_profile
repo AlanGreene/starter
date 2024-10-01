@@ -18,10 +18,6 @@ export GOPATH=$HOME/workspace/go
 eval "$(brew shellenv)"
 export PATH="$HOME/.bin:$HOME/.bin.local:$PATH"
 
-export N_PREFIX=$HOME/.bin/n
-#export PATH="$N_PREFIX/bin:$PATH"
-[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-
 export PATH="$PATH:$GOPATH/bin"
 #export PATH="$PATH:$HOME/workspace/public/kui/bin"
 #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -48,8 +44,8 @@ export KUBECONFIG_ORIGINAL=$KUBECONFIG
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 include () {
   [ -r "$1" ] && source "$1"
