@@ -8,6 +8,7 @@ alias _='sudo'
 alias watch='watch '
 alias ll='ls -alh'
 alias mkdir='mkdir -p'
+alias tmpdir='cd $(mktemp -d)'
 alias diff='diff -y --suppress-common-lines'
 
 # Copy w/ progress
