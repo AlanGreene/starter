@@ -37,6 +37,11 @@ export KO_DOCKER_REPO='kind.local'
 export KIND_CLUSTER_NAME='tekton-dashboard'
 export GOROOT=`go env GOROOT`
 
+# enable docker buildx for use with colima
+# mkdir -p ~/.docker/cli-plugins
+# curl -SL https://github.com/docker/buildx/releases/download/v0.12.1/buildx-v0.12.1.darwin-arm64 -o ~/.docker/cli-plugins/docker-buildx
+# chmod +x ~/.docker/cli-plugins/docker-buildx
+
 export KUBECONFIG=$HOME/.kube/config
 export KUBECONFIG_ORIGINAL=$KUBECONFIG
 
