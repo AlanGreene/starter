@@ -15,8 +15,9 @@ export LC_ALL='en_IE.UTF-8'
 
 export GOPATH=$HOME/workspace/go
 
-eval "$(brew shellenv)"
 export PATH="$HOME/.bin:$HOME/.bin.local:$PATH"
+export PATH="$PATH:/opt/homebrew/bin"
+eval "$(brew shellenv)"
 
 export PATH="$PATH:$GOPATH/bin"
 #export PATH="$PATH:$HOME/workspace/public/kui/bin"
