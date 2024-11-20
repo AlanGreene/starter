@@ -11,6 +11,7 @@ alias mkdir='mkdir -p'
 alias tmpdir='cd $(mktemp -d)'
 alias diff='diff -y --suppress-common-lines'
 alias nosleep='caffeinate -disu -t 1800'
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 
 # Copy w/ progress
 cp_p () {
