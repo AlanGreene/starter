@@ -135,6 +135,7 @@ cask 'vlc'
 # cask 'pencil'
 
 cask '1password'
+brew '1password-cli'
 
 # sshfs
 # relies on kernel extension which will be blocked
