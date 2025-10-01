@@ -101,6 +101,7 @@ shopt_options=(
   globasciiranges
   globstar
   histappend
+  histverify
   interactive_comments
   no_empty_cmd_completion
   nocaseglob
