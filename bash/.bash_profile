@@ -125,3 +125,6 @@ bind Space:magic-space
 if [ "${SSH_TTY}" != "" ] && [ -z "$TMUX" ]; then
   tmux attach -t default || tmux new -s default
 fi
+
+# default is ~/.oci/config
+export OCI_CLI_CONFIG_FILE=$HOME/.config/oci/config
