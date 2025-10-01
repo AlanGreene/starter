@@ -6,12 +6,16 @@ alias sudo='sudo '
 alias _='sudo'
 
 alias watch='watch '
-alias ll='ls -alh'
+alias ls='ls --color'
+alias ll='ls -alh --color'
 alias mkdir='mkdir -p'
 alias tmpdir='cd $(mktemp -d)'
 alias diff='diff -y --suppress-common-lines'
 alias nosleep='caffeinate -disu -t 1800'
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
+alias o='open .'
+
+alias mux='tmuxinator'
 
 # Copy w/ progress
 cp_p () {
