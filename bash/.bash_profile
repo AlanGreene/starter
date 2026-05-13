@@ -36,7 +36,7 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 
 export KO_DOCKER_REPO='kind.local'
 export KIND_CLUSTER_NAME='tekton-dashboard'
-export GOROOT=`go env GOROOT`
+#export GOROOT=`go env GOROOT`
 
 # enable docker buildx for use with colima
 # mkdir -p ~/.docker/cli-plugins
@@ -124,3 +124,12 @@ bind Space:magic-space
 if [ "${SSH_TTY}" != "" ] && [ -z "$TMUX" ]; then
   tmux attach -t default || tmux new -s default
 fi
+
+# pyenv init
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+
+[[ -e "/Users/alan/lib/oci_autocomplete.sh" ]] && source "/Users/alan/lib/oci_autocomplete.sh"
+export OCI_CLI_CONFIG_FILE=/Users/alan/.config/oci/config

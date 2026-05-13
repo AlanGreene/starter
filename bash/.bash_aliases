@@ -13,6 +13,9 @@ alias diff='diff -y --suppress-common-lines'
 alias nosleep='caffeinate -disu -t 1800'
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 
+alias mux='tmuxinator'
+complete -F _complete_alias mux
+
 # Copy w/ progress
 cp_p () {
   rsync -WavP --human-readable --progress $1 $2
@@ -270,6 +273,8 @@ function kubeconfig() {
   export KUBECONFIG=$kubeConfigFile && kubeon
 }
 export -f kubeconfig
+
+alias kubeoci="kubeconfig ~/.kube/oci"
 
 # Heroku
 # PSQL UI
